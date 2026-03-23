@@ -29,6 +29,11 @@
 
     /* Mapa */
     #map { width:100%; height:350px; margin-top:20px; border-radius:15px; box-shadow:0 4px 10px rgba(0,0,0,0.1); }
+
+    /* Galeria zdjęć */
+    .gallery { display:flex; flex-wrap:wrap; gap:15px; justify-content:center; }
+    .gallery img { width:300px; height:200px; object-fit:cover; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.2); transition: transform 0.3s; }
+    .gallery img:hover { transform: scale(1.05); }
   </style>
 </head>
 <body>
@@ -39,6 +44,7 @@
   <button onclick="showSection('kontakt', this)">Kontakt</button>
   <button onclick="showSection('formularz', this)">Formularz zapytaniowy</button>
   <button onclick="showSection('mapa', this)">Mapa</button>
+  <button onclick="showSection('zdjecia', this)">Zdjęcia</button>
 </nav>
 
 <main>
@@ -73,6 +79,13 @@
   <section id="mapa">
     <div id="map"></div>
   </section>
+
+  <section id="zdjecia">
+    <div class="gallery">
+      <!-- Wystarczy wrzucić zdjęcia do folderu 'images' i dodać je tutaj -->
+      <img src="images/foto11.jpg" alt="">
+    </div>
+  </section>
 </main>
 
 <script>
@@ -86,9 +99,8 @@ function showSection(id, btn) {
   btn.classList.add('active');
 }
 
-// Google Maps
 function initMap() {
-  const ostrowiec = { lat: 50.939, lng: 21.385 }; // ustaw współrzędne garażu
+  const ostrowiec = { lat: 50.939, lng: 21.385 };
   const map = new google.maps.Map(document.getElementById('map'), {
     zoom: 15,
     center: ostrowiec
