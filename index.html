@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Garaże do wynajęcia</title>
+  <style>
+    body { margin:0; font-family: Arial, sans-serif; background:#111; color:#fff; }
+    header { padding:20px; text-align:center; background:#1a1a1a; }
+    nav a { margin:0 15px; color:#fff; text-decoration:none; }
+    section { padding:40px 20px; max-width:1000px; margin:auto; }
+    h2 { margin-bottom:20px; }
+
+    .gallery { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:15px; }
+    .gallery img { width:100%; border-radius:10px; }
+
+    .status { padding:20px; border-radius:10px; text-align:center; font-size:20px; }
+    .available { background:#1b5e20; }
+    .unavailable { background:#7f0000; }
+
+    .btn { display:inline-block; padding:12px 25px; background:#00bcd4; color:#000; border-radius:8px; text-decoration:none; margin-top:15px; }
+
+    footer { text-align:center; padding:20px; background:#1a1a1a; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Garaże do wynajęcia</h1>
+  <nav>
+    <a href="#">Start</a>
+    <a href="#zdjecia">Zdjęcia</a>
+    <a href="#dostepnosc">Dostępność</a>
+    <a href="#kontakt">Kontakt</a>
+  </nav>
+</header>
+
+<section>
+  <h2>O garażach</h2>
+  <p>Oferuję garaże do wynajęcia w bezpiecznej lokalizacji. Idealne do przechowywania samochodu, motocykla lub rzeczy.</p>
+</section>
+
+<section id="zdjecia">
+  <h2>Zdjęcia</h2>
+  <div class="gallery">
+    <img src="https://via.placeholder.com/400x250" alt="Garaż 1">
+    <img src="https://via.placeholder.com/400x250" alt="Garaż 2">
+    <img src="https://via.placeholder.com/400x250" alt="Garaż 3">
+  </div>
+</section>
+
+<section id="dostepnosc">
+  <h2>Dostępność</h2>
+  <!-- Zmień klasę na unavailable jeśli brak miejsc -->
+  <div class="status available">
+    Dostępne garaże ✔
+  </div>
+</section>
+
+<section id="kontakt">
+  <h2>Kontakt</h2>
+  <p>Telefon: 123 456 789</p>
+  <p>Email: kontakt@twojadomena.pl</p>
+  <a class="btn" href="tel:123456789">Zadzwoń</a>
+</section>
+
+<footer>
+  <p>© 2026 Garaże do wynajęcia</p>
+</footer>
+
+</body>
+</html>
