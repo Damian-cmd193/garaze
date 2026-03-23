@@ -5,116 +5,88 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Garaże do wynajęcia</title>
   <style>
-    body { margin:0; font-family: Arial, sans-serif; background:#121212; color:#fff; }
-    header { padding:20px; text-align:center; background:#1c1c1c; }
-    nav a { margin:0 15px; color:#fff; text-decoration:none; font-weight:bold; }
-    section { padding:40px 20px; max-width:1000px; margin:auto; }
-    h2 { margin-bottom:20px; }
+    body { margin:0; font-family: Arial, sans-serif; display:flex; height:100vh; }
+    /* Lewa kolumna */
+    nav { width:200px; background:#1c1c1c; color:#fff; display:flex; flex-direction:column; padding-top:20px; }
+    nav button { background:none; border:none; color:#fff; padding:15px; text-align:left; cursor:pointer; font-size:16px; width:100%; }
+    nav button:hover { background:#333; }
 
-    /* Slider */
-    .slider { position:relative; overflow:hidden; border-radius:10px; }
-    .slides { display:flex; transition:0.5s; }
-    .slides img { width:100%; border-radius:10px; }
-    .slider-btn { position:absolute; top:50%; transform:translateY(-50%); background:rgba(0,0,0,0.5); color:#fff; border:none; font-size:24px; padding:10px; cursor:pointer; border-radius:50%; }
-    .prev { left:10px; }
-    .next { right:10px; }
+    /* Główna zawartość */
+    main { flex:1; padding:20px; overflow:auto; }
+    header { text-align:center; margin-bottom:20px; }
+    h1 { margin:0; }
 
-    /* Dostępność */
-    .status { padding:20px; border-radius:10px; text-align:center; font-size:20px; margin-top:15px; }
-    .available { background:#1b5e20; }
-    .unavailable { background:#7f0000; }
+    section { display:none; }
+    section.active { display:block; }
 
-    /* Formularz kontaktowy */
-    form { display:flex; flex-direction:column; max-width:400px; margin:auto; }
-    input, textarea { padding:10px; margin:5px 0; border-radius:5px; border:none; }
-    button { padding:12px; background:#00bcd4; color:#000; border:none; border-radius:8px; cursor:pointer; margin-top:10px; font-weight:bold; }
-
-    footer { text-align:center; padding:20px; background:#1c1c1c; margin-top:30px; }
+    /* Formularz */
+    form { display:flex; flex-direction:column; max-width:400px; }
+    input, textarea { padding:10px; margin:5px 0; border-radius:5px; border:1px solid #ccc; }
+    button.submit-btn { padding:12px; background:#00bcd4; color:#000; border:none; border-radius:8px; cursor:pointer; font-weight:bold; margin-top:10px; }
 
     /* Mapa */
-    #map { width:100%; height:300px; border-radius:10px; margin-top:20px; }
+    #map { width:100%; height:300px; margin-top:20px; border-radius:10px; }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>Garaże do wynajęcia</h1>
-  <nav>
-    <a href="#">Start</a>
-    <a href="#galeria">Galeria</a>
-    <a href="#dostepnosc">Dostępność</a>
-    <a href="#kontakt">Kontakt</a>
-  </nav>
-</header>
+<nav>
+  <button onclick="showSection('opis')">Opis</button>
+  <button onclick="showSection('dostepnosc')">Dostępność</button>
+  <button onclick="showSection('kontakt')">Kontakt</button>
+  <button onclick="showSection('formularz')">Formularz zapytaniowy</button>
+  <button onclick="showSection('mapa')">Mapa</button>
+</nav>
 
-<section>
-  <h2>O garażach</h2>
-  <p>Oferujemy garaż o wymiarach 5 x 3 m w bezpiecznej, monitorowanej lokalizacji. Teren jest chroniony, a brama wjazdowa automatyczna, co zapewnia wygodę i pełne bezpieczeństwo Twojego pojazdu lub rzeczy osobistych.</p>
-</section>
-<section>
-  <h2>Podgląd z kamery</h2>
-  
-</section>
-<section id="galeria">
-  <h2>Galeria</h2>
-  <div class="slider">
-    <div class="slides">
-      <img src="https://via.placeholder.com/1000x500" alt="Garaż 1">
-      <img src="https://via.placeholder.com/1000x500" alt="Garaż 2">
-      <img src="https://via.placeholder.com/1000x500" alt="Garaż 3">
-    </div>
-    <button class="slider-btn prev">&#10094;</button>
-    <button class="slider-btn next">&#10095;</button>
-  </div>
-</section>
+<main>
+  <header>
+    <h1>Garaże do wynajęcia</h1>
+  </header>
 
-<section id="dostepnosc">
-  <h2>Dostępność</h2>
-  <div class="status available">
-    2 wolne garaże ✔
-  </div>
-</section>
+  <section id="opis" class="active">
+    <p>Oferujemy garaż o wymiarach <strong>5 x 3 m</strong> w bezpiecznej, monitorowanej lokalizacji. Teren jest chroniony, a brama wjazdowa automatyczna, co zapewnia wygodę i pełne bezpieczeństwo Twojego pojazdu lub rzeczy osobistych.</p>
+  </section>
 
-<section id="kontakt">
-  <h2>Kontakt</h2>
-  <form action="https://formspree.io/f/yourformid" method="POST">
-    <input type="text" name="name" placeholder="Imię i nazwisko" required>
-    <input type="email" name="email" placeholder="Twój email" required>
-    <textarea name="message" placeholder="Wiadomość" rows="4" required></textarea>
-    <button type="submit">Wyślij</button>
-  </form>
+  <section id="dostepnosc">
+    <p><strong>Dostępność:</strong> 2 garaże</p>
+  </section>
 
-  <div id="map"></div>
-</section>
+  <section id="kontakt">
+    <p><strong>Moje dane:</strong><br>
+    Damian Chamera<br>
+    Nr tel.: 509-291-095<br>
+    E-mail: damian_chamera@o2.pl</p>
+  </section>
 
-<footer>
-  <p>© 2026 Garaże do wynajęcia</p>
-</footer>
+  <section id="formularz">
+    <form action="https://formspree.io/f/yourformid" method="POST">
+      <input type="text" name="name" placeholder="Imię i nazwisko" required>
+      <input type="email" name="email" placeholder="Twój email" required>
+      <textarea name="message" placeholder="Wiadomość" rows="4" required></textarea>
+      <button type="submit" class="submit-btn">Wyślij</button>
+    </form>
+  </section>
+
+  <section id="mapa">
+    <div id="map"></div>
+  </section>
+</main>
 
 <script>
-// Slider JS
-const slides = document.querySelector('.slides');
-const images = document.querySelectorAll('.slides img');
-let index = 0;
-
-function showSlide(i) {
-  if(i < 0) index = images.length - 1;
-  else if(i >= images.length) index = 0;
-  else index = i;
-  slides.style.transform = `translateX(${-index * 100}%)`;
+function showSection(id) {
+  const sections = document.querySelectorAll('main section');
+  sections.forEach(sec => sec.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
 }
-
-document.querySelector('.prev').addEventListener('click', () => showSlide(index -1));
-document.querySelector('.next').addEventListener('click', () => showSlide(index +1));
 
 // Google Maps
 function initMap() {
-  const ostrowiec = { lat: 50.939, lng: 21.385 }; // zmień na dokładne współrzędne
+  const ostrowiec = { lat: 50.939, lng: 21.385 }; // zmień na dokładne współrzędne garażu
   const map = new google.maps.Map(document.getElementById('map'), {
     zoom: 15,
     center: ostrowiec
   });
-  const marker = new google.maps.Marker({ position: ostrowiec, map: map });
+  new google.maps.Marker({ position: ostrowiec, map: map });
 }
 </script>
 <script async src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
