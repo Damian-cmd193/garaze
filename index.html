@@ -7,13 +7,11 @@
   <style>
     body { margin:0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display:flex; height:100vh; background:#f4f4f9; color:#333; }
 
-    /* Lewa kolumna */
     nav { width:220px; background:#1e1e2f; color:#fff; display:flex; flex-direction:column; padding-top:20px; box-shadow: 3px 0 6px rgba(0,0,0,0.2); }
     nav button { background:none; border:none; color:#fff; padding:15px; text-align:left; cursor:pointer; font-size:16px; width:100%; transition: all 0.3s; border-left: 5px solid transparent; }
     nav button:hover { background:#33334d; border-left:5px solid #00bcd4; }
     nav button.active { background:#33334d; border-left:5px solid #00bcd4; }
 
-    /* Główna zawartość */
     main { flex:1; padding:40px 30px; overflow:auto; background: linear-gradient(to bottom, #f4f4f9 0%, #e0e0f0 100%); }
     header { text-align:center; margin-bottom:30px; }
     h1 { margin:0; font-size:36px; color:#1e1e2f; }
@@ -21,19 +19,15 @@
     section { display:none; background:#fff; padding:25px; border-radius:15px; box-shadow:0 4px 10px rgba(0,0,0,0.1); margin-bottom:30px; opacity:0; transform: translateY(20px); transition: all 0.5s ease; }
     section.active { display:block; opacity:1; transform: translateY(0); }
 
-    /* Formularz */
     form { display:flex; flex-direction:column; max-width:500px; }
     input, textarea { padding:12px; margin:8px 0; border-radius:8px; border:1px solid #ccc; font-size:16px; }
-    button.submit-btn { padding:14px; background:#00bcd4; color:#fff; border:none; border-radius:10px; cursor:pointer; font-weight:bold; margin-top:12px; transition: background 0.3s; }
+    button.submit-btn { padding:14px; background:#00bcd4; color:#fff; border:none; border-radius:10px; cursor:pointer; font-weight:bold; margin-top:12px; }
     button.submit-btn:hover { background:#0097a7; }
 
-    /* Mapa */
-    #map { width:100%; height:350px; margin-top:20px; border-radius:15px; box-shadow:0 4px 10px rgba(0,0,0,0.1); }
+    #map { width:100%; height:350px; margin-top:20px; border-radius:15px; }
 
-    /* Galeria zdjęć */
     .gallery { display:flex; flex-wrap:wrap; gap:15px; justify-content:center; }
-    .gallery img { width:300px; height:200px; object-fit:cover; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.2); transition: transform 0.3s; }
-    .gallery img:hover { transform: scale(1.05); }
+    .gallery img { width:300px; height:200px; object-fit:cover; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.2); }
   </style>
 </head>
 <body>
@@ -42,7 +36,7 @@
   <button class="active" onclick="showSection('opis', this)">Opis</button>
   <button onclick="showSection('dostepnosc', this)">Dostępność</button>
   <button onclick="showSection('kontakt', this)">Kontakt</button>
-  <button onclick="showSection('formularz', this)">Formularz zapytaniowy</button>
+  <button onclick="showSection('formularz', this)">Formularz</button>
   <button onclick="showSection('mapa', this)">Mapa</button>
   <button onclick="showSection('zdjecia', this)">Zdjęcia</button>
 </nav>
@@ -53,7 +47,7 @@
   </header>
 
   <section id="opis" class="active">
-    <p>Oferujemy garaż o wymiarach <strong>5 x 3 m</strong> w bezpiecznej, monitorowanej lokalizacji. Teren jest chroniony, brama wjazdowa automatyczna, co zapewnia wygodę i pełne bezpieczeństwo Twojego pojazdu lub rzeczy osobistych.</p>
+    <p>Oferujemy garaż o wymiarach <strong>5 x 3 m</strong> w bezpiecznej, monitorowanej lokalizacji. Teren jest chroniony, brama automatyczna.</p>
   </section>
 
   <section id="dostepnosc">
@@ -61,19 +55,16 @@
   </section>
 
   <section id="kontakt">
-    <p><strong>Kontakt:</strong><br>
-    Damian Chamera<br>
-    Nr tel.: 509-291-095<br>
-    E-mail: damian_chamera@o2.pl</p>
+    <p>Damian Chamera<br>509-291-095<br>damian_chamera@o2.pl</p>
   </section>
 
   <section id="formularz">
     <form action="https://formspree.io/f/mpqyvnwl" method="POST">
-  <input type="text" name="name" placeholder="Imię i nazwisko" required>
-  <input type="email" name="email" placeholder="Twój email" required>
-  <textarea name="message" placeholder="Wiadomość" rows="4" required></textarea>
-  <button type="submit" class="submit-btn">Wyślij</button>
-</form>
+      <input type="text" name="name" placeholder="Imię i nazwisko" required>
+      <input type="email" name="email" placeholder="Twój email" required>
+      <textarea name="message" placeholder="Wiadomość" required></textarea>
+      <button type="submit" class="submit-btn">Wyślij</button>
+    </form>
   </section>
 
   <section id="mapa">
@@ -82,7 +73,6 @@
 
   <section id="zdjecia">
     <div class="gallery">
-      <!-- Wystarczy wrzucić zdjęcia do folderu 'images' i dodać je tutaj -->
       <img src="images/foto1.jpg" alt="">
     </div>
   </section>
@@ -90,24 +80,19 @@
 
 <script>
 function showSection(id, btn) {
-  const sections = document.querySelectorAll('main section');
-  sections.forEach(sec => sec.classList.remove('active'));
+  document.querySelectorAll('main section').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-
-  const buttons = document.querySelectorAll('nav button');
-  buttons.forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
 }
 
 function initMap() {
-  const ostrowiec = { lat: 50.939, lng: 21.385 };
-  const map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 15,
-    center: ostrowiec
-  });
-  new google.maps.Marker({ position: ostrowiec, map: map });
+  const loc = { lat: 50.939, lng: 21.385 };
+  const map = new google.maps.Map(document.getElementById('map'), { zoom: 15, center: loc });
+  new google.maps.Marker({ position: loc, map: map });
 }
 </script>
+
 <script async src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
 
 </body>
