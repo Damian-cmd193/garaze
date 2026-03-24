@@ -207,7 +207,6 @@
       width:100%;
     }
 
-    /* RESPONSYWNOŚĆ */
     @media (max-width: 700px) {
       nav { width:180px; }
       h1 { font-size:26px; }
@@ -226,7 +225,9 @@
   <button onclick="showSection('formularz', this)">Formularz</button>
   <button onclick="showSection('mapa', this)">Mapa</button>
   <button onclick="showSection('zdjecia', this)">Zdjęcia</button>
-  <button onclick="showSection('admin', this)">Admin</button>
+
+  <!-- Ukryty przycisk Admin -->
+  <button id="adminBtn" onclick="showSection('admin', this)" style="display:none;">Admin</button>
 </nav>
 
 <main>
@@ -300,12 +301,11 @@
     </form>
   </section>
 
-  <!-- MAPA (IFRAME + IKONA + TRASA) -->
+  <!-- MAPA -->
   <section id="mapa">
     <div class="card">
       <h2>Lokalizacja garaży</h2>
 
-      <!-- Ikona garażu -->
       <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
         <img src="https://cdn-icons-png.flaticon.com/512/2965/2965567.png" 
              alt="Garaż" 
@@ -313,7 +313,6 @@
         <span style="font-size:18px; font-weight:bold;">Przesmyk 7, Ostrowiec Świętokrzyski</span>
       </div>
 
-      <!-- Mapa -->
       <iframe 
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2513.5855533115578!2d21.392593976852588!3d50.94987725127847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4718090a501651ed%3A0x22a46f40d9b037b8!2sPrzesmyk%207%2C%2027-400%20Ostrowiec%20%C5%9Awi%C4%99tokrzyski!5e0!3m2!1spl!2spl!4v1774355836355!5m2!1spl!2spl" 
         width="100%" 
@@ -324,7 +323,6 @@
         referrerpolicy="no-referrer-when-downgrade">
       </iframe>
 
-      <!-- Przycisk Pokaż trasę -->
       <a href="https://www.google.com/maps/dir/?api=1&destination=Przesmyk+7+Ostrowiec+Świętokrzyski" 
          target="_blank"
          style="
@@ -373,6 +371,23 @@ let counterAnimated = false;
 let isAdmin = false;
 const ADMIN_PASSWORD = "C1a5t3c2k0";
 
+/* Ukryty kod aktywujący Admin po wpisaniu sekwencji */
+let secret = "asdfghjkl;'\\";
+let typed = "";
+
+document.addEventListener("keydown", (e) => {
+  typed += e.key;
+
+  if (typed.length > secret.length) {
+    typed = typed.slice(-secret.length);
+  }
+
+  if (typed === secret) {
+    document.getElementById("adminBtn").style.display = "block";
+    alert("Tryb administratora aktywowany");
+  }
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("totalSpan").textContent = totalSpaces;
   document.getElementById("adminFreeInput").value = freeSpaces;
@@ -400,7 +415,6 @@ function showSection(id, btn) {
   }
 }
 
-/* Aktualizacja dostępności */
 function updateAvailabilityUI() {
   const counter = document.getElementById("counter");
   const bar = document.getElementById("progressBar");
@@ -415,10 +429,9 @@ function updateAvailabilityUI() {
   fillText.textContent = "Zapełnienie: " + percentFill + "%";
 }
 
-/* Licznik odliczający przy pierwszym wejściu */
 function animateCounter() {
   let current = 0;
-  const target = Math.max(0, Math.min(freeSpaces, totalSpaces));
+  const target = freeSpaces;
   const counter = document.getElementById("counter");
 
   counter.textContent = 0;
@@ -432,7 +445,6 @@ function animateCounter() {
   }, 150);
 }
 
-/* Zapis z panelu admina */
 function saveFreeSpaces(e) {
   e.preventDefault();
   const val = parseInt(document.getElementById("adminFreeInput").value, 10);
