@@ -31,7 +31,23 @@
       margin-bottom:20px;
       font-size:18px;
       color:#9ca3af;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:8px;
     }
+
+    /* Animowany samochód */
+    .car {
+      display:inline-block;
+      animation: drive 1.5s infinite ease-in-out;
+    }
+    @keyframes drive {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(6px); }
+      100% { transform: translateX(0); }
+    }
+
     nav button {
       background:none;
       border:none;
@@ -162,7 +178,8 @@
 <body>
 
 <nav>
-  <h2>MENU</h2>
+  <h2>MENU <span class="car">🚗</span></h2>
+
   <button class="active" onclick="showSection('opis', this)">Opis</button>
   <button onclick="showSection('dostepnosc', this)">Dostępność</button>
   <button onclick="showSection('cennik', this)">Cennik</button>
@@ -209,20 +226,19 @@
 
   <!-- KONTAKT -->
   <section id="kontakt">
-  <div class="card">
-    Damian Chamera<br>
-    📞 509-291-095<br>
-    ✉️ damian_chamera@o2.pl
-  </div>
+    <div class="card">
+      Damian Chamera<br>
+      📞 509-291-095<br>
+      ✉️ damian_chamera@o2.pl
+    </div>
 
-  <div class="card">
-    <h3>Zeskanuj mój kontakt</h3>
-    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=BEGIN:VCARD%0AVERSION:3.0%0AN:Damian%20Chamera%0ATEL:509291095%0AEMAIL:damian_chamera@o2.pl%0AEND:VCARD" 
-         alt="QR Kod kontaktowy" 
-         style="width:200px; height:200px; border-radius:12px;">
-  </div>
-</section>
-
+    <div class="card">
+      <h3>Zeskanuj mój kontakt</h3>
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=BEGIN:VCARD%0AVERSION:3.0%0AN:Damian%20Chamera%0ATEL:509291095%0AEMAIL:damian_chamera@o2.pl%0AEND:VCARD"
+           alt="QR Kod kontaktowy"
+           style="width:200px; height:200px; border-radius:12px;">
+    </div>
+  </section>
 
   <!-- FORMULARZ -->
   <section id="formularz">
