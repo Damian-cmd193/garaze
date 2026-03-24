@@ -4,41 +4,159 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Garaże do wynajęcia</title>
+
+  <meta name="description" content="Garaże do wynajęcia – bezpieczna, monitorowana lokalizacja. Sprawdź dostępność, cennik i skontaktuj się.">
+
   <style>
-    body { margin:0; font-family: 'Segoe UI', Tahoma, sans-serif; display:flex; height:100vh; background:#eef1f7; color:#333; }
+    body {
+      margin:0;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      display:flex;
+      height:100vh;
+      background:#eef1f7;
+      color:#333;
+    }
 
-    nav { width:240px; background:#111827; color:#fff; display:flex; flex-direction:column; padding-top:20px; }
-    nav h2 { text-align:center; margin-bottom:20px; font-size:18px; color:#9ca3af; }
-    nav button { background:none; border:none; color:#fff; padding:14px 20px; text-align:left; cursor:pointer; font-size:15px; transition:0.3s; border-left:4px solid transparent; }
-    nav button:hover, nav button.active { background:#1f2937; border-left:4px solid #22c55e; }
+    /* MENU */
+    nav {
+      width:240px;
+      background:#111827;
+      color:#fff;
+      display:flex;
+      flex-direction:column;
+      padding-top:20px;
+    }
+    nav h2 {
+      text-align:center;
+      margin-bottom:20px;
+      font-size:18px;
+      color:#9ca3af;
+    }
+    nav button {
+      background:none;
+      border:none;
+      color:#fff;
+      padding:14px 20px;
+      text-align:left;
+      cursor:pointer;
+      font-size:15px;
+      transition:0.3s;
+      border-left:4px solid transparent;
+    }
+    nav button:hover,
+    nav button.active {
+      background:#1f2937;
+      border-left:4px solid #22c55e;
+    }
 
-    main { flex:1; padding:40px; overflow:auto; }
-    header { text-align:center; margin-bottom:30px; }
-    h1 { font-size:34px; margin-bottom:10px; }
-    .subtitle { color:#6b7280; }
+    /* MAIN */
+    main {
+      flex:1;
+      padding:40px;
+      overflow:auto;
+    }
+    header {
+      text-align:center;
+      margin-bottom:30px;
+    }
+    h1 {
+      font-size:34px;
+      margin-bottom:10px;
+    }
+    .subtitle {
+      color:#6b7280;
+    }
 
-    section { display:none; background:#fff; padding:30px; border-radius:16px; box-shadow:0 10px 25px rgba(0,0,0,0.08); }
-    section.active { display:block; }
+    /* SEKCJE */
+    section {
+      display:none;
+      background:#fff;
+      padding:30px;
+      border-radius:16px;
+      box-shadow:0 10px 25px rgba(0,0,0,0.08);
+      opacity:0;
+      transition:opacity 0.4s ease;
+    }
+    section.active {
+      display:block;
+      opacity:1;
+    }
 
-    form { display:flex; flex-direction:column; max-width:500px; }
-    input, textarea { padding:12px; margin:8px 0; border-radius:10px; border:1px solid #ddd; }
-    button.submit-btn { padding:14px; background:#22c55e; color:#fff; border:none; border-radius:10px; cursor:pointer; font-weight:bold; }
-    button.submit-btn:hover { background:#16a34a; }
+    .card {
+      background:#f9fafb;
+      padding:20px;
+      border-radius:12px;
+      margin-bottom:15px;
+    }
 
-    #map { width:100%; height:350px; border-radius:15px; }
+    /* FORMULARZ */
+    form {
+      display:flex;
+      flex-direction:column;
+      max-width:500px;
+    }
+    input, textarea {
+      padding:12px;
+      margin:8px 0;
+      border-radius:10px;
+      border:1px solid #ddd;
+    }
+    button.submit-btn {
+      padding:14px;
+      background:#22c55e;
+      color:#fff;
+      border:none;
+      border-radius:10px;
+      cursor:pointer;
+      font-weight:bold;
+    }
+    button.submit-btn:hover {
+      background:#16a34a;
+    }
 
-    .gallery { display:flex; overflow:hidden; position:relative; }
-    .gallery img { width:100%; max-width:600px; margin:auto; border-radius:12px; }
+    /* MAPA */
+    #map {
+      width:100%;
+      height:350px;
+      border-radius:15px;
+    }
+
+    /* GALERIA */
+    .gallery {
+      display:flex;
+      overflow:hidden;
+      position:relative;
+    }
+    .gallery img {
+      width:100%;
+      max-width:600px;
+      margin:auto;
+      border-radius:12px;
+      transition:opacity 0.5s ease;
+    }
+    .fade {
+      opacity:0;
+    }
 
     .slider-btn {
-      position:absolute; top:50%; transform:translateY(-50%);
-      background:rgba(0,0,0,0.5); color:#fff; border:none;
-      padding:10px; cursor:pointer; border-radius:50%;
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      background:rgba(0,0,0,0.5);
+      color:#fff;
+      border:none;
+      padding:10px;
+      cursor:pointer;
+      border-radius:50%;
     }
     .prev { left:10px; }
     .next { right:10px; }
 
-    .card { background:#f9fafb; padding:20px; border-radius:12px; margin-bottom:15px; }
+    /* RESPONSYWNOŚĆ */
+    @media (max-width: 700px) {
+      nav { width:180px; }
+      h1 { font-size:26px; }
+    }
   </style>
 </head>
 <body>
@@ -47,6 +165,7 @@
   <h2>MENU</h2>
   <button class="active" onclick="showSection('opis', this)">Opis</button>
   <button onclick="showSection('dostepnosc', this)">Dostępność</button>
+  <button onclick="showSection('cennik', this)">Cennik</button>
   <button onclick="showSection('kontakt', this)">Kontakt</button>
   <button onclick="showSection('formularz', this)">Formularz</button>
   <button onclick="showSection('mapa', this)">Mapa</button>
@@ -59,18 +178,36 @@
     <div class="subtitle">Bezpieczne miejsce dla Twojego auta</div>
   </header>
 
+  <!-- OPIS -->
   <section id="opis" class="active">
     <div class="card">
-      Oferujemy garaż o wymiarach <strong>5 x 3 m</strong> w bezpiecznej, monitorowanej lokalizacji. Teren jest chroniony, a brama automatyczna zapewnia wygodę.
+      Oferujemy garaż o wymiarach <strong>5 x 3 m</strong> w bezpiecznej, monitorowanej lokalizacji.
+      Teren jest chroniony, a brama automatyczna zapewnia wygodę.
     </div>
   </section>
 
+  <!-- DOSTĘPNOŚĆ -->
   <section id="dostepnosc">
     <div class="card">
       <strong>Dostępność:</strong> 3 garaże
     </div>
   </section>
 
+  <!-- CENNIK -->
+  <section id="cennik">
+    <div class="card">
+      <h2>Cennik</h2>
+      <ul>
+        <li>1 miesiąc – <strong>300 zł</strong></li>
+        <li>3 miesiące – <strong>850 zł</strong></li>
+        <li>6 miesięcy – <strong>1600 zł</strong></li>
+        <li>12 miesięcy – <strong>3000 zł</strong></li>
+      </ul>
+      <p>Ceny zawierają dostęp 24/7, monitoring oraz automatyczną bramę.</p>
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
   <section id="kontakt">
     <div class="card">
       Damian Chamera<br>
@@ -79,6 +216,7 @@
     </div>
   </section>
 
+  <!-- FORMULARZ -->
   <section id="formularz">
     <form action="https://formspree.io/f/mpqyvnwl" method="POST">
       <input type="text" name="name" placeholder="Imię i nazwisko" required>
@@ -88,10 +226,12 @@
     </form>
   </section>
 
+  <!-- MAPA -->
   <section id="mapa">
     <div id="map"></div>
   </section>
 
+  <!-- ZDJĘCIA -->
   <section id="zdjecia">
     <div class="gallery">
       <button class="slider-btn prev" onclick="prevSlide()">❮</button>
@@ -109,24 +249,41 @@ function showSection(id, btn) {
   btn.classList.add('active');
 }
 
+/* SLIDER */
 let images = ["images/garaz1.jpg","images/garaz2.jpg","images/garaz3.jpg"];
 let index = 0;
 
 function nextSlide(){
-  index = (index + 1) % images.length;
-  document.getElementById("slider").src = images[index];
+  const img = document.getElementById("slider");
+  img.classList.add("fade");
+  setTimeout(() => {
+    index = (index + 1) % images.length;
+    img.src = images[index];
+    img.classList.remove("fade");
+  }, 300);
 }
 
 function prevSlide(){
-  index = (index - 1 + images.length) % images.length;
-  document.getElementById("slider").src = images[index];
+  const img = document.getElementById("slider");
+  img.classList.add("fade");
+  setTimeout(() => {
+    index = (index - 1 + images.length) % images.length;
+    img.src = images[index];
+    img.classList.remove("fade");
+  }, 300);
 }
 
 setInterval(nextSlide, 4000);
 
+/* MAPA SATELITARNA */
 function initMap() {
   const loc = { lat: 50.939, lng: 21.385 };
-  const map = new google.maps.Map(document.getElementById('map'), { zoom: 15, center: loc });
+  const map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 17,
+    center: loc,
+    mapTypeId: 'satellite',
+    mapTypeControl: true
+  });
   new google.maps.Marker({ position: loc, map: map });
 }
 </script>
