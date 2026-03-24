@@ -83,7 +83,7 @@
       color:#6b7280;
     }
 
-    /* SEKCJE */
+    /* SEKCJE + animowane wejście */
     section {
       display:none;
       background:#fff;
@@ -91,11 +91,13 @@
       border-radius:16px;
       box-shadow:0 10px 25px rgba(0,0,0,0.08);
       opacity:0;
-      transition:opacity 0.4s ease;
+      transform:translateY(10px);
+      transition:opacity 0.4s ease, transform 0.4s ease;
     }
     section.active {
       display:block;
       opacity:1;
+      transform:translateY(0);
     }
 
     .card {
@@ -128,7 +130,7 @@
       height:100%;
       width:0%;
       background:#22c55e;
-      transition:width 1s ease;
+      transition:width 0.8s ease;
     }
     .availability-info {
       font-size:16px;
@@ -192,6 +194,19 @@
     .prev { left:10px; }
     .next { right:10px; }
 
+    /* ADMIN PANEL */
+    .admin-form {
+      max-width:320px;
+    }
+    .admin-form label {
+      font-weight:bold;
+      margin-bottom:4px;
+      display:block;
+    }
+    .admin-form input {
+      width:100%;
+    }
+
     /* RESPONSYWNOŚĆ */
     @media (max-width: 700px) {
       nav { width:180px; }
@@ -211,6 +226,7 @@
   <button onclick="showSection('formularz', this)">Formularz</button>
   <button onclick="showSection('mapa', this)">Mapa</button>
   <button onclick="showSection('zdjecia', this)">Zdjęcia</button>
+  <button onclick="showSection('admin', this)">Admin</button>
 </nav>
 
 <main>
@@ -237,9 +253,9 @@
       </div>
 
       <div class="availability-info">
-        <strong>Wolne:</strong> <span id="counter">0</span> z 20 garaży  
+        <strong>Wolne:</strong> <span id="counter">0</span> z <span id="totalSpan">20</span> garaży  
         <br>
-        <span style="color:#6b7280;">Zapełnienie: 85%</span>
+        <span id="fillText" style="color:#6b7280;">Zapełnienie: 0%</span>
       </div>
     </div>
   </section>
@@ -335,38 +351,98 @@
       <button class="slider-btn next" onclick="nextSlide()">❯</button>
     </div>
   </section>
+
+  <!-- ADMIN PANEL -->
+  <section id="admin">
+    <div class="card admin-form">
+      <h2>Panel administratora</h2>
+      <p>Zmiana liczby wolnych garaży (lokalnie, bez zapisu na serwerze).</p>
+      <form onsubmit="saveFreeSpaces(event)">
+        <label for="adminFreeInput">Wolne garaże (0–20):</label>
+        <input type="number" id="adminFreeInput" min="0" max="20" value="3" required>
+        <button type="submit" class="submit-btn" style="margin-top:10px;">Zapisz</button>
+      </form>
+    </div>
+  </section>
 </main>
 
 <script>
+let totalSpaces = 20;
+let freeSpaces = 3;
+let counterAnimated = false;
+let isAdmin = false;
+const ADMIN_PASSWORD = "C1a5t3c2k0";
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("totalSpan").textContent = totalSpaces;
+  document.getElementById("adminFreeInput").value = freeSpaces;
+  updateAvailabilityUI();
+});
+
 function showSection(id, btn) {
+  if (id === "admin" && !isAdmin) {
+    const pwd = prompt("Podaj hasło administratora:");
+    if (pwd !== ADMIN_PASSWORD) {
+      alert("Nieprawidłowe hasło");
+      return;
+    }
+    isAdmin = true;
+  }
+
   document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
 
-  if (id === "dostepnosc") startCounter();
+  if (id === "dostepnosc" && !counterAnimated) {
+    counterAnimated = true;
+    animateCounter();
+  }
 }
 
-/* LICZNIK WOLNYCH MIEJSC */
-let started = false;
-function startCounter() {
-  if (started) return;
-  started = true;
-
-  let count = 0;
-  const target = 3;
+/* Aktualizacja dostępności */
+function updateAvailabilityUI() {
   const counter = document.getElementById("counter");
   const bar = document.getElementById("progressBar");
+  const fillText = document.getElementById("fillText");
 
+  const free = Math.max(0, Math.min(freeSpaces, totalSpaces));
+  const percentFree = (free / totalSpaces) * 100;
+  const percentFill = 100 - Math.round(percentFree);
+
+  counter.textContent = free;
+  bar.style.width = percentFree + "%";
+  fillText.textContent = "Zapełnienie: " + percentFill + "%";
+}
+
+/* Licznik odliczający przy pierwszym wejściu */
+function animateCounter() {
+  let current = 0;
+  const target = Math.max(0, Math.min(freeSpaces, totalSpaces));
+  const counter = document.getElementById("counter");
+
+  counter.textContent = 0;
   const interval = setInterval(() => {
-    count++;
-    counter.textContent = count;
-    if (count >= target) clearInterval(interval);
-  }, 200);
+    current++;
+    if (current > target) {
+      clearInterval(interval);
+      return;
+    }
+    counter.textContent = current;
+  }, 150);
+}
 
-  setTimeout(() => {
-    bar.style.width = "15%";
-  }, 300);
+/* Zapis z panelu admina */
+function saveFreeSpaces(e) {
+  e.preventDefault();
+  const val = parseInt(document.getElementById("adminFreeInput").value, 10);
+  if (isNaN(val) || val < 0 || val > totalSpaces) {
+    alert("Podaj liczbę z zakresu 0–" + totalSpaces);
+    return;
+  }
+  freeSpaces = val;
+  updateAvailabilityUI();
+  alert("Zapisano nową liczbę wolnych garaży: " + freeSpaces);
 }
 
 /* SLIDER */
