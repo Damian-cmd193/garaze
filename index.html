@@ -105,6 +105,37 @@
       margin-bottom:15px;
     }
 
+    /* PROFESJONALNA DOSTĘPNOŚĆ */
+    .availability-box {
+      padding:20px;
+      background:#f3f4f6;
+      border-radius:14px;
+      border:1px solid #e5e7eb;
+    }
+    .availability-title {
+      font-size:20px;
+      font-weight:bold;
+      margin-bottom:10px;
+    }
+    .progress-container {
+      background:#e5e7eb;
+      border-radius:10px;
+      height:18px;
+      overflow:hidden;
+      margin:12px 0;
+    }
+    .progress-bar {
+      height:100%;
+      width:0%;
+      background:#22c55e;
+      transition:width 1s ease;
+    }
+    .availability-info {
+      font-size:16px;
+      margin-top:10px;
+      color:#374151;
+    }
+
     /* FORMULARZ */
     form {
       display:flex;
@@ -205,8 +236,18 @@
 
   <!-- DOSTĘPNOŚĆ -->
   <section id="dostepnosc">
-    <div class="card">
-      <strong>Dostępność:</strong> 3 garaże
+    <div class="availability-box">
+      <div class="availability-title">Aktualna dostępność garaży</div>
+
+      <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+
+      <div class="availability-info">
+        <strong>Wolne:</strong> <span id="counter">0</span> z 20 garaży  
+        <br>
+        <span style="color:#6b7280;">Zapełnienie: 85%</span>
+      </div>
     </div>
   </section>
 
@@ -271,6 +312,30 @@ function showSection(id, btn) {
   document.getElementById(id).classList.add('active');
   document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
+
+  if (id === "dostepnosc") startCounter();
+}
+
+/* LICZNIK WOLNYCH MIEJSC */
+let started = false;
+function startCounter() {
+  if (started) return;
+  started = true;
+
+  let count = 0;
+  const target = 3;
+  const counter = document.getElementById("counter");
+  const bar = document.getElementById("progressBar");
+
+  const interval = setInterval(() => {
+    count++;
+    counter.textContent = count;
+    if (count >= target) clearInterval(interval);
+  }, 200);
+
+  setTimeout(() => {
+    bar.style.width = "15%";
+  }, 300);
 }
 
 /* SLIDER */
