@@ -5,34 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Garaże do wynajęcia</title>
   <style>
-    body { margin:0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display:flex; height:100vh; background:#f4f4f9; color:#333; }
+    body { margin:0; font-family: 'Segoe UI', Tahoma, sans-serif; display:flex; height:100vh; background:#eef1f7; color:#333; }
 
-    nav { width:220px; background:#1e1e2f; color:#fff; display:flex; flex-direction:column; padding-top:20px; box-shadow: 3px 0 6px rgba(0,0,0,0.2); }
-    nav button { background:none; border:none; color:#fff; padding:15px; text-align:left; cursor:pointer; font-size:16px; width:100%; transition: all 0.3s; border-left: 5px solid transparent; }
-    nav button:hover { background:#33334d; border-left:5px solid #00bcd4; }
-    nav button.active { background:#33334d; border-left:5px solid #00bcd4; }
+    nav { width:240px; background:#111827; color:#fff; display:flex; flex-direction:column; padding-top:20px; }
+    nav h2 { text-align:center; margin-bottom:20px; font-size:18px; color:#9ca3af; }
+    nav button { background:none; border:none; color:#fff; padding:14px 20px; text-align:left; cursor:pointer; font-size:15px; transition:0.3s; border-left:4px solid transparent; }
+    nav button:hover, nav button.active { background:#1f2937; border-left:4px solid #22c55e; }
 
-    main { flex:1; padding:40px 30px; overflow:auto; background: linear-gradient(to bottom, #f4f4f9 0%, #e0e0f0 100%); }
+    main { flex:1; padding:40px; overflow:auto; }
     header { text-align:center; margin-bottom:30px; }
-    h1 { margin:0; font-size:36px; color:#1e1e2f; }
+    h1 { font-size:34px; margin-bottom:10px; }
+    .subtitle { color:#6b7280; }
 
-    section { display:none; background:#fff; padding:25px; border-radius:15px; box-shadow:0 4px 10px rgba(0,0,0,0.1); margin-bottom:30px; opacity:0; transform: translateY(20px); transition: all 0.5s ease; }
-    section.active { display:block; opacity:1; transform: translateY(0); }
+    section { display:none; background:#fff; padding:30px; border-radius:16px; box-shadow:0 10px 25px rgba(0,0,0,0.08); }
+    section.active { display:block; }
 
     form { display:flex; flex-direction:column; max-width:500px; }
-    input, textarea { padding:12px; margin:8px 0; border-radius:8px; border:1px solid #ccc; font-size:16px; }
-    button.submit-btn { padding:14px; background:#00bcd4; color:#fff; border:none; border-radius:10px; cursor:pointer; font-weight:bold; margin-top:12px; }
-    button.submit-btn:hover { background:#0097a7; }
+    input, textarea { padding:12px; margin:8px 0; border-radius:10px; border:1px solid #ddd; }
+    button.submit-btn { padding:14px; background:#22c55e; color:#fff; border:none; border-radius:10px; cursor:pointer; font-weight:bold; }
+    button.submit-btn:hover { background:#16a34a; }
 
-    #map { width:100%; height:350px; margin-top:20px; border-radius:15px; }
+    #map { width:100%; height:350px; border-radius:15px; }
 
-    .gallery { display:flex; flex-wrap:wrap; gap:15px; justify-content:center; }
-    .gallery img { width:300px; height:200px; object-fit:cover; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.2); }
+    .gallery { display:flex; overflow:hidden; position:relative; }
+    .gallery img { width:100%; max-width:600px; margin:auto; border-radius:12px; }
+
+    .slider-btn {
+      position:absolute; top:50%; transform:translateY(-50%);
+      background:rgba(0,0,0,0.5); color:#fff; border:none;
+      padding:10px; cursor:pointer; border-radius:50%;
+    }
+    .prev { left:10px; }
+    .next { right:10px; }
+
+    .card { background:#f9fafb; padding:20px; border-radius:12px; margin-bottom:15px; }
   </style>
 </head>
 <body>
 
 <nav>
+  <h2>MENU</h2>
   <button class="active" onclick="showSection('opis', this)">Opis</button>
   <button onclick="showSection('dostepnosc', this)">Dostępność</button>
   <button onclick="showSection('kontakt', this)">Kontakt</button>
@@ -44,18 +56,27 @@
 <main>
   <header>
     <h1>Garaże do wynajęcia</h1>
+    <div class="subtitle">Bezpieczne miejsce dla Twojego auta</div>
   </header>
 
   <section id="opis" class="active">
-    <p>Oferujemy garaż o wymiarach <strong>5 x 3 m</strong> w bezpiecznej, monitorowanej lokalizacji. Teren jest chroniony, brama automatyczna.</p>
+    <div class="card">
+      Oferujemy garaż o wymiarach <strong>5 x 3 m</strong> w bezpiecznej, monitorowanej lokalizacji. Teren jest chroniony, a brama automatyczna zapewnia wygodę.
+    </div>
   </section>
 
   <section id="dostepnosc">
-    <p><strong>Dostępność:</strong> 3 garaże</p>
+    <div class="card">
+      <strong>Dostępność:</strong> 3 garaże
+    </div>
   </section>
 
   <section id="kontakt">
-    <p>Damian Chamera<br>509-291-095<br>damian_chamera@o2.pl</p>
+    <div class="card">
+      Damian Chamera<br>
+      📞 509-291-095<br>
+      ✉️ damian_chamera@o2.pl
+    </div>
   </section>
 
   <section id="formularz">
@@ -73,18 +94,35 @@
 
   <section id="zdjecia">
     <div class="gallery">
-      <img src="images/foto1.jpg" alt="">
+      <button class="slider-btn prev" onclick="prevSlide()">❮</button>
+      <img id="slider" src="images/garaz1.jpg">
+      <button class="slider-btn next" onclick="nextSlide()">❯</button>
     </div>
   </section>
 </main>
 
 <script>
 function showSection(id, btn) {
-  document.querySelectorAll('main section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
 }
+
+let images = ["images/garaz1.jpg","images/garaz2.jpg","images/garaz3.jpg"];
+let index = 0;
+
+function nextSlide(){
+  index = (index + 1) % images.length;
+  document.getElementById("slider").src = images[index];
+}
+
+function prevSlide(){
+  index = (index - 1 + images.length) % images.length;
+  document.getElementById("slider").src = images[index];
+}
+
+setInterval(nextSlide, 4000);
 
 function initMap() {
   const loc = { lat: 50.939, lng: 21.385 };
