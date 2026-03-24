@@ -161,13 +161,6 @@
       background:#16a34a;
     }
 
-    /* MAPA */
-    #map {
-      width:100%;
-      height:350px;
-      border-radius:15px;
-    }
-
     /* GALERIA */
     .gallery {
       display:flex;
@@ -291,9 +284,47 @@
     </form>
   </section>
 
-  <!-- MAPA -->
+  <!-- MAPA (IFRAME + IKONA + TRASA) -->
   <section id="mapa">
-    <div id="map"></div>
+    <div class="card">
+      <h2>Lokalizacja garaży</h2>
+
+      <!-- Ikona garażu -->
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+        <img src="https://cdn-icons-png.flaticon.com/512/2965/2965567.png" 
+             alt="Garaż" 
+             style="width:40px; height:40px;">
+        <span style="font-size:18px; font-weight:bold;">Przesmyk 7, Ostrowiec Świętokrzyski</span>
+      </div>
+
+      <!-- Mapa -->
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2513.5855533115578!2d21.392593976852588!3d50.94987725127847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4718090a501651ed%3A0x22a46f40d9b037b8!2sPrzesmyk%207%2C%2027-400%20Ostrowiec%20%C5%9Awi%C4%99tokrzyski!5e0!3m2!1spl!2spl!4v1774355836355!5m2!1spl!2spl" 
+        width="100%" 
+        height="400" 
+        style="border:0; border-radius:15px;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+
+      <!-- Przycisk Pokaż trasę -->
+      <a href="https://www.google.com/maps/dir/?api=1&destination=Przesmyk+7+Ostrowiec+Świętokrzyski" 
+         target="_blank"
+         style="
+           display:inline-block;
+           margin-top:15px;
+           padding:12px 20px;
+           background:#22c55e;
+           color:white;
+           border-radius:10px;
+           text-decoration:none;
+           font-weight:bold;
+         ">
+        🚗 Pokaż trasę
+      </a>
+
+    </div>
   </section>
 
   <!-- ZDJĘCIA -->
@@ -363,21 +394,7 @@ function prevSlide(){
 }
 
 setInterval(nextSlide, 4000);
-
-/* MAPA SATELITARNA */
-function initMap() {
-  const loc = { lat: 50.939, lng: 21.385 };
-  const map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 17,
-    center: loc,
-    mapTypeId: 'satellite',
-    mapTypeControl: true
-  });
-  new google.maps.Marker({ position: loc, map: map });
-}
 </script>
-
-<script async src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
 
 </body>
 </html>
