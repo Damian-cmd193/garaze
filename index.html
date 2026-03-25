@@ -39,9 +39,8 @@ nav {
     color:#f9fafb;
     display:flex;
     flex-direction:column;
-    padding:24px 18px 24px 18px;
-    box-shadow: 0 0 0 1px rgba(148,163,184,0.25),
-                0 18px 40px rgba(0,0,0,0.75);
+    padding:24px 18px;
+    box-shadow: 0 0 0 1px rgba(148,163,184,0.25), 0 18px 40px rgba(0,0,0,0.75);
     position:relative;
     z-index:2;
     border-right:1px solid rgba(148,163,184,0.35);
@@ -53,9 +52,7 @@ nav::before {
     inset:10px 6px 10px 0;
     border-radius:18px;
     border:1px solid rgba(56,189,248,0.35);
-    box-shadow:
-        0 0 18px rgba(56,189,248,0.35),
-        0 0 32px rgba(34,197,94,0.25);
+    box-shadow:0 0 18px rgba(56,189,248,0.35), 0 0 32px rgba(34,197,94,0.25);
     pointer-events:none;
 }
 
@@ -69,19 +66,7 @@ nav h2 {
     align-items:center;
     gap:8px;
     font-weight:600;
-    letter-spacing:0.08em;
     text-transform:uppercase;
-}
-
-/* Animowany samochód */
-.car {
-    display:inline-block;
-    animation: drive 1.5s infinite ease-in-out;
-}
-@keyframes drive {
-    0% { transform: translateX(0); }
-    50% { transform: translateX(6px); }
-    100% { transform: translateX(0); }
 }
 
 /* Buttons */
@@ -100,36 +85,11 @@ nav button {
     position:relative;
 }
 
-nav button span {
-    position:relative;
-    z-index:1;
-}
-
 nav button:hover,
 nav button.active {
     background:linear-gradient(90deg, rgba(15,23,42,0.9), rgba(30,64,175,0.7));
     box-shadow:0 10px 25px rgba(15,23,42,0.9);
     transform:translateX(2px);
-}
-
-nav button::before {
-    content:"";
-    position:absolute;
-    left:8px;
-    top:50%;
-    transform:translateY(-50%);
-    width:4px;
-    height:0;
-    border-radius:999px;
-    background:linear-gradient(to bottom, #22c55e, #38bdf8);
-    opacity:0;
-    transition:0.25s;
-}
-
-nav button:hover::before,
-nav button.active::before {
-    height:60%;
-    opacity:1;
 }
 
 /* MAIN */
@@ -138,32 +98,15 @@ main {
     padding:40px;
     overflow:auto;
     background:radial-gradient(circle at top, #1f2937 0%, #020617 55%, #020617 100%);
-    position:relative;
-    z-index:1;
 }
 
-header {
-    text-align:center;
-    margin-bottom:30px;
-}
-h1 {
-    font-size:34px;
-    margin-bottom:10px;
-    color:#f9fafb;
-}
-.subtitle {
-    color:#9ca3af;
-}
-
-/* SECTIONS */
+/* SEKCJE */
 section {
     display:none;
     background:rgba(15,23,42,0.96);
     padding:30px;
     border-radius:18px;
-    box-shadow:
-        0 18px 40px rgba(0,0,0,0.85),
-        0 0 0 1px rgba(148,163,184,0.35);
+    box-shadow:0 18px 40px rgba(0,0,0,0.85), 0 0 0 1px rgba(148,163,184,0.35);
     opacity:0;
     transform:translateY(10px);
     transition:opacity 0.4s ease, transform 0.4s ease;
@@ -182,17 +125,12 @@ section.active {
     border:1px solid rgba(148,163,184,0.35);
 }
 
-/* Availability UI */
+/* Availability */
 .availability-box {
     padding:20px;
     background:rgba(15,23,42,0.9);
     border-radius:16px;
     border:1px solid rgba(148,163,184,0.5);
-}
-.availability-title {
-    font-size:20px;
-    font-weight:bold;
-    margin-bottom:10px;
 }
 .progress-container {
     background:#111827;
@@ -200,59 +138,14 @@ section.active {
     height:18px;
     overflow:hidden;
     margin:12px 0;
-    box-shadow:inset 0 0 8px rgba(15,23,42,0.9);
 }
 .progress-bar {
     height:100%;
     width:0%;
     background:linear-gradient(90deg, #22c55e, #4ade80);
-    box-shadow:0 0 12px rgba(34,197,94,0.8);
-    transition:width 0.8s ease;
-}
-.availability-info {
-    font-size:16px;
-    margin-top:10px;
-    color:#e5e7eb;
 }
 
-/* Form */
-form {
-    display:flex;
-    flex-direction:column;
-    max-width:500px;
-}
-input, textarea {
-    padding:12px;
-    margin:8px 0;
-    border-radius:10px;
-    border:1px solid rgba(148,163,184,0.6);
-    background:#020617;
-    color:#e5e7eb;
-}
-input:focus, textarea:focus {
-    outline:none;
-    border-color:#38bdf8;
-    box-shadow:0 0 0 1px #38bdf8;
-}
-button.submit-btn {
-    padding:14px;
-    background:linear-gradient(90deg, #22c55e, #16a34a);
-    color:#fff;
-    border:none;
-    border-radius:10px;
-    cursor:pointer;
-    font-weight:bold;
-    letter-spacing:0.03em;
-    text-transform:uppercase;
-    font-size:13px;
-    box-shadow:0 12px 25px rgba(22,163,74,0.55);
-}
-button.submit-btn:hover {
-    background:linear-gradient(90deg, #16a34a, #22c55e);
-    transform:translateY(-1px);
-}
-
-/* GALLERY */
+/* Gallery */
 .gallery {
     display:flex;
     overflow:hidden;
@@ -264,11 +157,9 @@ button.submit-btn:hover {
     margin:auto;
     border-radius:14px;
     transition:opacity 0.5s ease;
-    box-shadow:0 18px 40px rgba(0,0,0,0.85);
 }
-.fade {
-    opacity:0;
-}
+.fade { opacity:0; }
+
 .slider-btn {
     position:absolute;
     top:50%;
@@ -279,21 +170,14 @@ button.submit-btn:hover {
     padding:10px;
     cursor:pointer;
     border-radius:999px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.8);
 }
 .prev { left:10px; }
 .next { right:10px; }
 
 /* MOBILE MENU */
 @media (max-width:700px) {
-
     #hamburger { display:block; }
-
-    body {
-        flex-direction:column;
-        height:auto;
-    }
-
+    body { flex-direction:column; }
     nav {
         position:fixed;
         top:0;
@@ -304,19 +188,10 @@ button.submit-btn:hover {
         transition:0.3s ease;
         z-index:999;
     }
-    nav.open {
-        transform:translateX(0);
-    }
-
-    main {
-        padding:20px;
-        margin-top:60px;
-    }
-
-    h1 { font-size:26px; }
+    nav.open { transform:translateX(0); }
+    main { padding:20px; margin-top:60px; }
 }
 
-/* DESKTOP OVERRIDE */
 @media (min-width:701px) {
     nav { transform:none !important; }
     #hamburger { display:none; }
@@ -326,12 +201,10 @@ button.submit-btn:hover {
 
 <body>
 
-<!-- HAMBURGER (mobile only) -->
 <button id="hamburger" onclick="toggleMenu()">☰</button>
 
-<!-- MENU -->
 <nav>
-    <h2>MENU <span class="car">🚗</span></h2>
+    <h2>MENU 🚗</h2>
 
     <button class="active" onclick="showSection('opis', this)">Opis</button>
     <button onclick="showSection('dostepnosc', this)">Dostępność</button>
@@ -341,13 +214,11 @@ button.submit-btn:hover {
     <button onclick="showSection('mapa', this)">Mapa</button>
     <button onclick="showSection('zdjecia', this)">Zdjęcia</button>
 
-    <!-- UKRYTE PRZYCISKI -->
     <button id="umowaBtn" onclick="showSection('umowa', this)" style="display:none;">Umowa</button>
     <button id="adminBtn" onclick="showSection('admin', this)" style="display:none;">Admin</button>
     <button id="umowaProBtn" onclick="showSection('umowaPro', this)" style="display:none;">Umowa PRO</button>
 </nav>
 
-<!-- MAIN -->
 <main>
 
 <header>
@@ -355,81 +226,40 @@ button.submit-btn:hover {
     <div class="subtitle">Bezpieczne miejsce dla Twojego auta</div>
 </header>
 
-<!-- OPIS -->
 <section id="opis" class="active">
     <div class="card">
-        <h2 style="margin-top:0;">Garaże do wynajęcia – 15 m²</h2>
-
-        Oferujemy do wynajęcia nowe, zadbane garaże o powierzchni 
-        <strong>15 m² (5 × 3 m)</strong>, znajdujące się na ogrodzonym i w pełni 
-        monitorowanym placu. Na terenie znajduje się <strong>20 garaży</strong> 
-        dostępnych dla najemców przez 24/7.
-
+        <h2>Garaże do wynajęcia – 15 m²</h2>
+        Oferujemy do wynajęcia nowe garaże o powierzchni <strong>15 m² (5×3 m)</strong>
+        na monitorowanym, ogrodzonym placu. Dostępnych jest <strong>20 garaży</strong>.
         <br><br>
-
         <strong>Dlaczego warto?</strong><br>
-        • nowoczesny, bezpieczny teren z monitoringiem 24/7,<br>
-        • automatyczna brama wjazdowa,<br>
-        • szeroki i wygodny plac manewrowy,<br>
-        • cicha, spokojna i bezpieczna okolica,<br>
-        • garaże suche, czyste i zadbane.
-
-        <br><br>
-
-        Idealne miejsce do przechowywania samochodu, motocykla, sprzętu sezonowego 
-        lub wyposażenia firmowego. Wysoki poziom bezpieczeństwa sprawia, że możesz 
-        mieć pełną pewność, że Twoje mienie jest dobrze chronione.
+        • Monitoring 24/7<br>
+        • Automatyczna brama<br>
+        • Duży plac manewrowy<br>
+        • Cicha, bezpieczna okolica
     </div>
 </section>
 
-<!-- DOSTĘPNOŚĆ -->
 <section id="dostepnosc">
     <div class="availability-box">
         <div class="availability-title">Aktualna dostępność garaży</div>
-
         <div class="progress-container">
             <div class="progress-bar" id="progressBar"></div>
         </div>
-
         <div class="availability-info">
-            <strong>Wolne:</strong> <span id="counter">0</span> z <span id="totalSpan">20</span> garaży<br>
-            <span id="fillText" style="color:#9ca3af;">Zapełnienie: 0%</span>
+            <strong>Wolne:</strong> <span id="counter">0</span> z <span id="totalSpan">20</span><br>
+            <span id="fillText">Zapełnienie: 0%</span>
         </div>
     </div>
 </section>
 
-<!-- CENNIK -->
-<section id="cennik">
-    <div class="card">
-        <h2>Cennik</h2>
-        <ul>
-            <li>1 miesiąc – <strong>300 zł</strong></li>
-            <li>3 miesiące – <strong>850 zł</strong></li>
-            <li>6 miesięcy – <strong>1600 zł</strong></li>
-            <li>12 miesięcy – <strong>3000 zł</strong></li>
-        </ul>
+<section id="zdjecia">
+    <div class="gallery">
+        <button class="slider-btn prev" onclick="prevSlide()">❮</button>
+        images/garaz1.jpg
+        <button class="slider-btn next" onclick="nextSlide()">❯</button>
     </div>
 </section>
-
-<!-- KONTAKT -->
-<section id="kontakt">
-    <div class="card">
-        Damian Chamera<br>
-        📞 509-291-095<br>
-        ✉️ damian_chamera@o2.pl
-    </div>
-</section>
-
-<!-- FORMULARZ -->
-<section id="formularz">
-    https://formspree.io/f/mpqyvnwl
-        <input type="text" name="name" placeholder="Imię i nazwisko" required>
-        <input type="email" name="email" placeholder="Twój email" required>
-        <textarea name="message" placeholder="Wiadomość" required></textarea>
-        <button type="submit" class="submit-btn">Wyślij</button>
-    </form>
-</section>
-
 <!-- MAPA -->
 <section id="mapa">
     <div class="card">
@@ -437,19 +267,8 @@ button.submit-btn:hover {
 
         <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2513.5855533115578!2d21.392593976852588!3d50.94987725127847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4718090a501651ed%3A0x22a46f40d9b037b8!2sPrzesmyk%207%2C%2027-400%20Ostrowiec%20%C5%9Awi%C4%99tokrzyski!5e0!3m2!1spl!2spl!4v1774355836355!5m2!1spl!2spl"
-            width="100%"
-            height="400"
-           >
-        <button class="slider-btn prev" onclick="prevSlide()">❮</button>
-        images/garaz1.jpg
-        <button class="slider-btn next" onclick="nextSlide()">❯</button>
-    </div>
-</section>
-<!-- UMOWA -->
-<section id="umowa">
-    <div class="card">
-        <h2>Umowa najmu garażu</h2>
-        <p style="font-size:13px; color:#9ca3af; margin-bottom:18px;">
+            width="100%" height="400" style="border:0; border-radius:14px;"
+            allowfullscreen="" loading="lazy" ref; color:#9ca3af; margin-bottom:18px;">
             Uzupełnij dane poniżej, a następnie wydrukuj umowę lub pobierz ją jako plik DOCX.
         </p>
 
@@ -512,7 +331,7 @@ button.submit-btn:hover {
 
         <div class="contract-grid">
             <div class="contract-group">
-                <label>Czynsz miesięczny (kwota)</label>
+                <label>Czynsz (miesięcznie)</label>
                 <input type="text" id="czynsz">
             </div>
             <div class="contract-group">
@@ -520,17 +339,17 @@ button.submit-btn:hover {
                 <input type="text" id="terminPlatnosci">
             </div>
             <div class="contract-group">
-                <label>Miejsce zawarcia umowy</label>
+                <label>Miejsce zawarcia</label>
                 <input type="text" id="miejsceUmowy">
             </div>
             <div class="contract-group">
-                <label>Data zawarcia umowy</label>
+                <label>Data zawarcia</label>
                 <input type="date" id="dataUmowy">
             </div>
         </div>
 
         <div class="contract-group">
-            <label>Uwagi dodatkowe (opcjonalnie)</label>
+            <label>Uwagi dodatkowe</label>
             <textarea id="uwagi" rows="3"></textarea>
         </div>
 
@@ -541,22 +360,22 @@ button.submit-btn:hover {
     </div>
 </section>
 
-<!-- UMOWA PRO (ukryta funkcja) -->
+<!-- UMOWA PRO -->
 <section id="umowaPro">
     <div class="card">
         <h2>Umowa PRO</h2>
-        <p>Zaawansowana sekcja dostępna tylko po odblokowaniu specjalnym kodem i hasłem.</p>
+        <p>Zaawansowana sekcja dostępna dopiero po odblokowaniu ukrytą sekwencją oraz hasłem.</p>
 
-        <input type="text" id="proField" placeholder="Pole testowe dla PRO">
+        <input type="text" id="proField" placeholder="Pole testowe PRO">
         <button onclick="alert('Sekcja PRO działa ✅')">Test</button>
     </div>
 </section>
 
 <!-- ADMIN -->
 <section id="admin">
-    <div class="card admin-form">
+    <div class="card">
         <h2>Panel administratora</h2>
-        <p>Zmiana liczby wolnych garaży (lokalnie, bez zapisu na serwer).</p>
+        <p>Aktualizacja liczby wolnych garaży (lokalne, bez serwera):</p>
 
         <form onsubmit="saveFreeSpaces(event)">
             <label for="adminFreeInput">Wolne garaże (0–20):</label>
@@ -568,28 +387,25 @@ button.submit-btn:hover {
 
 </main>
 <script>
-/* ===========================
-   🔓 RESPONSYWNE MENU (MOBILE)
-   =========================== */
+/* ============================================
+   ✅ RESPONSYWNE MENU – MOBILE
+============================================ */
 function toggleMenu() {
     document.querySelector("nav").classList.toggle("open");
 }
 
-/* ===========================
-   🔄 PRZEŁĄCZANIE SEKCJI
-   =========================== */
+/* ============================================
+   ✅ PRZEŁĄCZANIE SEKCJI
+============================================ */
 function showSection(id, btn) {
-
     // zamyka mobilne menu
     document.querySelector("nav").classList.remove("open");
 
-    // zabezpieczenie UMOWA
+    // --- zabezpieczenia sekcji ---
     if (id === "umowa" && !window.umowaUnlocked) {
         alert("Brak dostępu ❌");
         return;
     }
-
-    // zabezpieczenie ADMIN
     if (id === "admin" && !window.adminActive) {
         const pwd = prompt("Hasło administratora:");
         if (pwd !== "C1a5t3c2k0") {
@@ -598,10 +414,8 @@ function showSection(id, btn) {
         }
         window.adminActive = true;
     }
-
-    // zabezpieczenie UMOWA PRO
     if (id === "umowaPro" && !window.umowaProActive) {
-        const pwd = prompt("Podaj hasło do UMOWY PRO:");
+        const pwd = prompt("Hasło do UMOWY PRO:");
         if (pwd !== "c1a5t3c2k0") {
             alert("Nieprawidłowe hasło ❌");
             return;
@@ -609,20 +423,20 @@ function showSection(id, btn) {
         window.umowaProActive = true;
     }
 
-    // przełączanie sekcji
+    // --- przełączanie sekcji ---
     document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
     document.getElementById(id).classList.add("active");
 
-    // przełączanie przycisków
+    // --- aktywacja przycisku w menu ---
     document.querySelectorAll("nav button").forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
 }
 
-/* ===========================
-   🕹️ SEKWENCJE UKRYTE
-   =========================== */
+/* ============================================
+   ✅ UKRYTE SEKWENCJE – ADMIN / UMOWA / PRO
+============================================ */
 
-/* --- Admin --- */
+// --- Admin: 147159 ---
 let secretAdmin = "147159";
 let typedAdmin = "";
 
@@ -637,7 +451,7 @@ document.addEventListener("keydown", (e) => {
     }
 });
 
-/* --- UMOWA + UMOWA PRO --- */
+// --- Umowa + Umowa PRO: 159147 ---
 let secretUmowa = "159147";
 let typedUmowa = "";
 
@@ -647,7 +461,7 @@ document.addEventListener("keydown", (e) => {
         typedUmowa = typedUmowa.slice(-secretUmowa.length);
 
     if (typedUmowa === secretUmowa) {
-        const pwd = prompt("Podaj hasło dostępu do UMOWY:");
+        const pwd = prompt("Podaj hasło do UMOWY:");
         if (pwd === "c1a5t3c2k0") {
             window.umowaUnlocked = true;
             window.umowaProActive = true;
@@ -662,15 +476,21 @@ document.addEventListener("keydown", (e) => {
     }
 });
 
-/* ===========================
-   📸 SLIDER
-   =========================== */
-let images = ["images/garaz1.jpg","images/garaz2.jpg","images/garaz3.jpg"];
+/* ============================================
+   ✅ SLIDER ZDJĘĆ
+============================================ */
+let images = [
+    "images/garaz1.jpg",
+    "images/garaz2.jpg",
+    "images/garaz3.jpg"
+];
+
 let index = 0;
 
-function nextSlide(){
+function nextSlide() {
     const img = document.getElementById("slider");
     img.classList.add("fade");
+
     setTimeout(() => {
         index = (index + 1) % images.length;
         img.src = images[index];
@@ -678,9 +498,10 @@ function nextSlide(){
     }, 300);
 }
 
-function prevSlide(){
+function prevSlide() {
     const img = document.getElementById("slider");
     img.classList.add("fade");
+
     setTimeout(() => {
         index = (index - 1 + images.length) % images.length;
         img.src = images[index];
@@ -690,12 +511,11 @@ function prevSlide(){
 
 setInterval(nextSlide, 4000);
 
-/* ===========================
-   📊 DOSTĘPNOŚĆ
-   =========================== */
+/* ============================================
+   ✅ DOSTĘPNOŚĆ – LICZNIK / PASEK
+============================================ */
 let totalSpaces = 20;
 let freeSpaces = 3;
-let counterAnimated = false;
 
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("totalSpan").textContent = totalSpaces;
@@ -717,41 +537,25 @@ function updateAvailabilityUI() {
     fillText.textContent = "Zapełnienie: " + percentFill + "%";
 }
 
-function animateCounter() {
-    let current = 0;
-    const target = freeSpaces;
-    const counter = document.getElementById("counter");
-    counter.textContent = 0;
-
-    const interval = setInterval(() => {
-        current++;
-        if (current > target) {
-            clearInterval(interval);
-            return;
-        }
-        counter.textContent = current;
-    }, 150);
-}
-
 function saveFreeSpaces(e) {
     e.preventDefault();
-    const val = parseInt(document.getElementById("adminFreeInput").value, 10);
+
+    const val = parseInt(document.getElementById("adminFreeInput").value);
     if (isNaN(val) || val < 0 || val > totalSpaces) {
-        alert("Podaj liczbę z zakresu 0–" + totalSpaces);
+        alert("Podaj liczbę w zakresie 0–" + totalSpaces);
         return;
     }
+
     freeSpaces = val;
     updateAvailabilityUI();
-    alert("Zapisano nową liczbę wolnych garaży: " + freeSpaces);
+    alert("Zapisano nową wartość ✅");
 }
 
-/* ===========================
-   📄 GENEROWANIE PEŁNEJ UMOWY (ORYGINAŁ 1:1)
-   =========================== */
-
+/* ============================================
+   ✅ GENEROWANIE UMOWY – DRUK + DOCX
+============================================ */
 function buildContractHTML() {
 
-    /* Pobieranie wszystkich danych pól */
     const wynImie = document.getElementById("wynImie").value || "................................................";
     const wynAdres = document.getElementById("wynAdres").value || "................................................";
     const wynPesel = document.getElementById("wynPesel").value || "................................................";
@@ -764,35 +568,33 @@ function buildContractHTML() {
 
     const garazAdres = document.getElementById("garazAdres").value || "................................................";
     const garazNr = document.getElementById("garazNr").value || "................";
+
     const dataOd = document.getElementById("dataOd").value || "................";
     const dataDo = document.getElementById("dataDo").value || "................";
+
     const czynsz = document.getElementById("czynsz").value || "................";
-    const terminPlatnosci = document.getElementById("terminPlatnosci").value || "................................................";
-    const miejsceUmowy = document.getElementById("miejsceUmowy").value || "................................................";
-    const dataUmowy = document.getElementById("dataUmowy").value || "................";
-    const uwagi = document.getElementById("uwagi").value || "";
+    const termin = document.getElementById("terminPlatnosci").value || "................................................";
 
-    const uwagiHtml = uwagi
-        ? `<p><strong>§ 8. Postanowienia dodatkowe</strong><br>${uwagi.replace(/\n/g, "<br>")}</p>`
-        : "";
+    const miejsce = document.getElementById("miejsceUmowy").value || "................................................";
+    const dataU = document.getElementById("dataUmowy").value || "................";
 
-    /* === CAŁA PEŁNA TREŚĆ UMOWY — 1:1 Z TWOJEGO ORYGINAŁU === */
-    const html =
-`<!DOCTYPE html>
+    const uwagi = document.getElementById("uwagi").value;
+    const uwagiHtml = uwagi ? `
+        <p><strong>§ 8. Postanowienia dodatkowe</strong><br>
+        ${uwagi.replace(/\n/g, "<br>")}</p>` : "";
+
+return `
+<!DOCTYPE html>
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
 <title>Umowa najmu garażu</title>
 
 <style>
-body { font-family:'Segoe UI', Tahoma, sans-serif;font-size:12pt;line-height:1.5;margin:40px;color:#111827; }
-h1 { text-align:center;font-size:18pt;margin-bottom:20px; }
+body { font-family:'Segoe UI', Tahoma, sans-serif; font-size:12pt; line-height:1.5; margin:40px; color:#111827; }
+h1 { text-align:center; font-size:18pt; margin-bottom:20px; }
 p { margin:6px 0; }
-strong { font-weight:700; }
-.section-title { margin-top:14px;font-weight:700; }
-.sign-row { display:flex;justify-content:space-between;margin-top:60px; }
-.sign-col { width:45%;text-align:center; }
-hr { border:none;border-top:1px solid #000;margin:40px 0 10px 0; }
+.sign-row { display:flex; justify-content:space-between; margin-top:60px; }
 </style>
 </head>
 
@@ -800,97 +602,54 @@ hr { border:none;border-top:1px solid #000;margin:40px 0 10px 0; }
 
 <h1>UMOWA NAJMU GARAŻU</h1>
 
-<p>Zawarta w dniu ${dataUmowy} w miejscowości ${miejsceUmowy}, pomiędzy:</p>
+<p>Zawarta w dniu ${dataU} w miejscowości ${miejsce}, pomiędzy:</p>
 
-<p><strong>Wynajmującym:</strong> ${wynImie}, zamieszkałym / z siedzibą: ${wynAdres},<br>
-PESEL / NIP: ${wynPesel}, nr dowodu: ${wynDowod},<br>
-zwanym dalej „Wynajmującym”.</p>
+<p><strong>Wynajmującym:</strong> ${wynImie}, ${wynAdres}<br>
+PESEL/NIP: ${wynPesel}, nr dowodu: ${wynDowod}</p>
 
-<p>a</p>
+<p><strong>Najemcą:</strong> ${najImie}, ${najAdres}<br>
+PESEL: ${najPesel}, nr dowodu: ${najDowod}</p>
 
-<p><strong>Najemcą:</strong> ${najImie}, zamieszkałym: ${najAdres},<br>
-PESEL: ${najPesel}, nr dowodu: ${najDowod},<br>
-zwanym dalej „Najemcą”.</p>
+<p><strong>§ 1. Przedmiot umowy</strong><br>
+Wynajmujący oddaje Najemcy garaż: ${garazAdres}, nr ${garazNr}.</p>
 
-<p class="section-title">§ 1. Przedmiot umowy</p>
-<p>1. Wynajmujący oddaje Najemcy do używania garaż położony pod adresem: ${garazAdres}, nr garażu: ${garazNr}, zwany dalej „Garażem”.</p>
-<p>2. Garaż przeznaczony jest wyłącznie do parkowania pojazdu oraz przechowywania rzeczy niebędących materiałami niebezpiecznymi, łatwopalnymi lub wybuchowymi.</p>
+<p><strong>§ 2. Czas trwania umowy</strong><br>
+Od: ${dataOd} &nbsp;&nbsp; Do: ${dataDo}</p>
 
-<p class="section-title">§ 2. Czas trwania umowy</p>
-<p>1. Umowa zostaje zawarta na czas określony od dnia ${dataOd} do dnia ${dataDo}.</p>
-<p>2. Po upływie okresu, o którym mowa w ust. 1, umowa może zostać przedłużona na podstawie odrębnych ustaleń stron.</p>
-
-<p class="section-title">§ 3. Czynsz</p>
-<p>1. Strony ustalają miesięczny czynsz najmu w wysokości ${czynsz} (słownie: ...........................................................).</p>
-<p>2. Czynsz płatny jest z góry, ${terminPlatnosci}.</p>
-<p>3. W przypadku opóźnienia w płatności czynszu Wynajmujący ma prawo naliczać odsetki ustawowe za opóźnienie.</p>
-
-<p class="section-title">§ 4. Wydanie i zwrot Garażu</p>
-<p>1. Wydanie Garażu następuje w dniu rozpoczęcia najmu, o którym mowa w § 2 ust. 1.</p>
-<p>2. Najemca zobowiązuje się zwrócić Garaż w stanie niepogorszonym, z uwzględnieniem normalnego zużycia wynikającego z prawidłowego użytkowania.</p>
-
-<p class="section-title">§ 5. Odpowiedzialność i zasady korzystania</p>
-<p>1. Najemca zobowiązuje się do korzystania z Garażu w sposób zgodny z jego przeznaczeniem oraz przepisami prawa.</p>
-<p>2. Najemca ponosi pełną odpowiedzialność za szkody powstałe w Garażu z jego winy.</p>
-<p>3. Zabrania się przechowywania materiałów łatwopalnych, wybuchowych, żrących i niebezpiecznych.</p>
-
-<p class="section-title">§ 6. Rozwiązanie umowy</p>
-<p>1. Każda ze stron może rozwiązać umowę z jednomiesięcznym okresem wypowiedzenia ze skutkiem na koniec miesiąca.</p>
-<p>2. Wynajmujący może rozwiązać umowę ze skutkiem natychmiastowym w przypadku rażącego naruszenia warunków umowy.</p>
-
-<p class="section-title">§ 7. Postanowienia końcowe</p>
-<p>1. W sprawach nieuregulowanych stosuje się Kodeks cywilny.</p>
-<p>2. Zmiany wymagają formy pisemnej pod rygorem nieważności.</p>
-<p>3. Umowę sporządzono w dwóch jednobrzmiących egzemplarzach — po jednym dla każdej ze stron.</p>
+<p><strong>§ 3. Czynsz</strong><br>
+Kwota miesięczna: ${czynsz}<br>
+Termin płatności: ${termin}</p>
 
 ${uwagiHtml}
 
 <div class="sign-row">
-    <div class="sign-col">
-        ___________________________<br>
-        Wynajmujący
-    </div>
-    <div class="sign-col">
-        ___________________________<br>
-        Najemca
-    </div>
+    <div>___________________________<br>Wynajmujący</div>
+    <div>___________________________<br>Najemca</div>
 </div>
 
 </body>
 </html>`;
-
-    return html;
 }
 
-/* ===========================
-   🖨️ DRUKOWANIE UMOWY
-   =========================== */
+/* PRINT */
 function printContract() {
     const html = buildContractHTML();
     const win = window.open("", "_blank");
-    win.document.open();
     win.document.write(html);
-    win.document.close();
     win.print();
 }
 
-/* ===========================
-   📄 POBIERANIE DOCX
-   =========================== */
+/* DOCX DOWNLOAD */
 function downloadDocx() {
-    const html = buildContractHTML();
-    const blob = new Blob(['\ufeff', html],
-        { type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document" });
+    const blob = new Blob(['\ufeff', buildContractHTML()], {
+        type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    });
 
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "umowa_najmu_garazu.docx";
-    a.click();
-    URL.revokeObjectURL(url);
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "umowa_najmu_garazu.docx";
+    link.click();
 }
-
 </script>
-
 </body>
 </html>
