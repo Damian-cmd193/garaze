@@ -346,7 +346,8 @@ button.submit-btn:hover {
     <button onclick="showSection('formularz', this)"><span>Formularz</span></button>
     <button onclick="showSection('mapa', this)"><span>Mapa</span></button>
     <button onclick="showSection('zdjecia', this)"><span>Zdjęcia</span></button>
-    <button onclick="showSection('umowa', this)"><span>Umowa</span></button>
+    <button id="umowaBtn" onclick="showSection('umowa', this)" style="display:none;">
+    Umowa</button>
     <!-- Ukryty przycisk Admin -->
     <button id="adminBtn" onclick="showSection('admin', this)" style="display:none;"><span>Admin</span></button>
 </nav>
@@ -601,6 +602,29 @@ let counterAnimated = false;
 let isAdmin = false;
 const ADMIN_PASSWORD = "C1a5t3c2k0";
 
+    /* SEKRETNA SEKWENCJA UMOWA */
+let secretUmowa = "159147";
+let typedUmowa = "";
+
+document.addEventListener("keydown", (e) => {
+    typedUmowa += e.key;
+    if (typedUmowa.length > secretUmowa.length) {
+        typedUmowa = typedUmowa.slice(-secretUmowa.length);
+    }
+
+    if (typedUmowa === secretUmowa) {
+        // jeśli sekwencja poprawna → pytamy o hasło
+        const pwd = prompt("Podaj hasło dostępu do UMOWY:");
+        if (pwd === "c1a5t3c2k0") {
+            window.umowaUnlocked = true;
+            document.getElementById("umowaBtn").style.display = "block";
+            alert("Dostęp do umowy został odblokowany ✅");
+        } else {
+            alert("Nieprawidłowe hasło ❌");
+        }
+    }
+});
+    
 /* Ukryty kod aktywujący Admin po wpisaniu sekwencji */
 let secret = "asdfghjkl;'\\";
 let typed = "";
