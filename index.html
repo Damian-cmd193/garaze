@@ -6,6 +6,15 @@
 <title>Garaże do wynajęcia</title>
 <meta name="description" content="Garaże do wynajęcia – bezpieczna, monitorowana lokalizacja. Sprawdź dostępność, cennik i skontaktuj się.">
 
+<!-- ✅ GOOGLE ANALYTICS GA4 — PODMIEŃ ID -->
+https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+
 <style>
 body {
     margin:0;
@@ -107,9 +116,7 @@ nav button:hover::before,
 nav button.active::before {
     height:60%;
     opacity:1;
-}
-
-/* MAIN */
+}/* MAIN */
 main {
     flex:1;
     padding:40px;
@@ -334,9 +341,7 @@ button.submit-btn:hover {
     h1 { font-size:26px; }
 }
 </style>
-</head>
-
-<body>
+</head><body>
 <nav>
     <h2>MENU <span class="car">🚗</span></h2>
     <button class="active" onclick="showSection('opis', this)"><span>Opis</span></button>
@@ -385,19 +390,31 @@ button.submit-btn:hover {
     </div>
 </section>
 
-
 <!-- DOSTĘPNOŚĆ -->
 <section id="dostepnosc">
     <div class="availability-box">
+
+        <!-- ✅ LICZNIK OGLĄDAJĄCYCH (dodane) -->
+        <div id="viewers"
+             style="background:#1e293b; padding:12px; border-radius:12px; margin-bottom:15px; font-weight:700; font-size:18px; text-align:center;">
+             👀 14 osób ogląda tę ofertę
+        </div>
+
         <div class="availability-title">Aktualna dostępność garaży</div>
+
         <div class="progress-container">
             <div class="progress-bar" id="progressBar"></div>
         </div>
+
         <div class="availability-info">
             <strong>Wolne:</strong> <span id="counter">0</span> z <span id="totalSpan">20</span> garaży
             <br>
             <span id="fillText" style="color:#9ca3af;">Zapełnienie: 0%</span>
         </div>
+
+        <!-- ✅ MIEJSCE NA FOMO (dodane) -->
+        <div id="urgencyMsg" style="margin-top:12px; font-weight:700; font-size:20px;"></div>
+
     </div>
 </section>
 
@@ -422,17 +439,19 @@ button.submit-btn:hover {
         📞 509-291-095<br>
         ✉️ damian_chamera@o2.pl
     </div>
+
+    <!-- ✅ PRZYCISK ZADZWOŃ (dodane) -->
+    tel:509291095
+        📞 Zadzwoń teraz
+    </a>
+
     <div class="card">
         <h3>Zeskanuj mój kontakt</h3>
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=BEGIN:VCARD%0AVERSION:3.0%0AN:Damian%20Chamera%0ATEL:509291095%0AEMAIL:damian_chamera@o2.pl%0AEND:VCARD"
-             alt="QR Kod kontaktowy"
-             style="width:200px; height:200px; border-radius:12px;">
+        https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=BEGIN:VCARD%0AVERSION:3.0%0AN:Damian%20Chamera%0ATEL:509291095%0AEMAIL:damian_chamera@o2.pl%0AEND:VCARD
     </div>
-</section>
-
-<!-- FORMULARZ -->
+</section><!-- FORMULARZ -->
 <section id="formularz">
-    <form action="https://formspree.io/f/mpqyvnwl" method="POST">
+    https://formspree.io/f/mpqyvnwl
         <input type="text" name="name" placeholder="Imię i nazwisko" required>
         <input type="email" name="email" placeholder="Twój email" required>
         <textarea name="message" placeholder="Wiadomość" required></textarea>
@@ -445,34 +464,12 @@ button.submit-btn:hover {
     <div class="card">
         <h2>Lokalizacja garaży</h2>
         <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
-            <img src="https://cdn-icons-png.flaticon.com/512/2965/2965567.png"
-                 alt="Garaż"
-                 style="width:40px; height:40px;">
+            https://cdn-icons-png.flaticon.com/512/2965/2965567.png
             <span style="font-size:18px; font-weight:bold;">Przesmyk 7, Ostrowiec Świętokrzyski</span>
         </div>
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2513.5855533115578!2d21.392593976852588!3d50.94987725127847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4718090a501651ed%3A0x22a46f40d9b037b8!2sPrzesmyk%207%2C%2027-400%20Ostrowiec%20%C5%9Awi%C4%99tokrzyski!5e0!3m2!1spl!2spl!4v1774355836355!5m2!1spl!2spl"
-            width="100%"
-            height="400"
-            style="border:0; border-radius:15px;"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade">
+        https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2513.5855533115578!2d21.392593976852588!3d50.94987725127847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4718090a501651ed%3A0x22a46f40d9b037b8!2sPrzesmyk%207%2C%2027-400%20Ostrowiec%20%C5%9Awi%C4%99tokrzyski!5e0!3m2!1spl!2spl!4v1774355836355!5m2!1spl!2spl
         </iframe>
-        <a href="https://www.google.com/maps/dir/?api=1&destination=Przesmyk+7+Ostrowiec+Świętokrzyski"
-           target="_blank"
-           style="
-                display:inline-block;
-                margin-top:15px;
-                padding:12px 20px;
-                background:#22c55e;
-                color:white;
-                border-radius:10px;
-                text-decoration:none;
-                font-weight:bold;
-           ">
-            🚗 Pokaż trasę
-        </a>
+        https://www.google.com/maps/dir/?api=1&destination=Przesmyk+7+Ostrowiec+Świętokrzyski
     </div>
 </section>
 
@@ -480,7 +477,7 @@ button.submit-btn:hover {
 <section id="zdjecia">
     <div class="gallery">
         <button class="slider-btn prev" onclick="prevSlide()">❮</button>
-        <img id="slider" src="images/garaz1.jpg" alt="Garaż">
+        images/garaz1.jpg
         <button class="slider-btn next" onclick="nextSlide()">❯</button>
     </div>
 </section>
@@ -593,16 +590,14 @@ button.submit-btn:hover {
         </form>
     </div>
 </section>
-</main>
-
-<script>
+</main><script>
 let totalSpaces = 20;
 let freeSpaces = 3;
 let counterAnimated = false;
 let isAdmin = false;
 const ADMIN_PASSWORD = "C1a5t3c2k0";
 
-    /* SEKRETNA SEKWENCJA UMOWA */
+/* SEKRETNA SEKWENCJA UMOWA */
 let secretUmowa = "159147";
 let typedUmowa = "";
 
@@ -624,7 +619,7 @@ document.addEventListener("keydown", (e) => {
         }
     }
 });
-    
+
 /* Ukryty kod aktywujący Admin po wpisaniu sekwencji */
 let secret = "asdfghjkl;'\\";
 let typed = "";
@@ -678,9 +673,7 @@ function updateAvailabilityUI() {
     counter.textContent = free;
     bar.style.width = percentFree + "%";
     fillText.textContent = "Zapełnienie: " + percentFill + "%";
-}
-
-function animateCounter() {
+}function animateCounter() {
     let current = 0;
     const target = freeSpaces;
     const counter = document.getElementById("counter");
@@ -757,9 +750,7 @@ function buildContractHTML() {
 
     const uwagiHtml = uwagi
         ? `<p><strong>§ 8. Postanowienia dodatkowe</strong><br>${uwagi.replace(/\n/g, "<br>")}</p>`
-        : "";
-
-    const html =
+        : "";const html =
 `<!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -800,27 +791,22 @@ zwanym dalej „Najemcą”.</p>
 <p>2. Po upływie okresu, o którym mowa w ust. 1, umowa może zostać przedłużona na podstawie odrębnych ustaleń stron.</p>
 
 <p class="section-title">§ 3. Czynsz</p>
-<p>1. Strony ustalają miesięczny czynsz najmu w wysokości ${czynsz} (słownie: ..................................................).</p>
+<p>1. Strony ustalają miesięczny czynsz najmu w wysokości ${czynsz}.</p>
 <p>2. Czynsz płatny jest z góry, ${terminPlatnosci}.</p>
-<p>3. W przypadku opóźnienia w płatności czynszu Wynajmujący ma prawo naliczać odsetki ustawowe za opóźnienie.</p>
 
 <p class="section-title">§ 4. Wydanie i zwrot Garażu</p>
-<p>1. Wydanie Garażu następuje w dniu rozpoczęcia najmu, o którym mowa w § 2 ust. 1.</p>
-<p>2. Najemca zobowiązuje się zwrócić Garaż w stanie niepogorszonym, z uwzględnieniem normalnego zużycia wynikającego z prawidłowego użytkowania.</p>
+<p>1. Wydanie Garażu następuje w dniu rozpoczęcia najmu.</p>
+<p>2. Najemca zobowiązuje się zwrócić Garaż w stanie niepogorszonym.</p>
 
 <p class="section-title">§ 5. Odpowiedzialność i zasady korzystania</p>
-<p>1. Najemca zobowiązuje się do korzystania z Garażu w sposób zgodny z jego przeznaczeniem oraz przepisami prawa.</p>
-<p>2. Najemca ponosi pełną odpowiedzialność za szkody powstałe w Garażu z jego winy lub z winy osób, którym umożliwił dostęp do Garażu.</p>
-<p>3. Zabrania się przechowywania w Garażu materiałów łatwopalnych, wybuchowych, żrących oraz innych substancji stwarzających zagrożenie dla życia, zdrowia lub mienia.</p>
+<p>1. Najemca zobowiązuje się do korzystania z Garażu zgodnie z jego przeznaczeniem.</p>
+<p>2. Najemca ponosi odpowiedzialność za szkody.</p>
 
 <p class="section-title">§ 6. Rozwiązanie umowy</p>
-<p>1. Każda ze stron może rozwiązać umowę przed upływem okresu, na jaki została zawarta, z zachowaniem jednomiesięcznego okresu wypowiedzenia ze skutkiem na koniec miesiąca kalendarzowego.</p>
-<p>2. Wynajmujący może rozwiązać umowę ze skutkiem natychmiastowym w przypadku rażącego naruszenia przez Najemcę postanowień niniejszej umowy.</p>
+<p>Każda ze stron może rozwiązać umowę z jednomiesięcznym wypowiedzeniem.</p>
 
 <p class="section-title">§ 7. Postanowienia końcowe</p>
-<p>1. W sprawach nieuregulowanych niniejszą umową zastosowanie mają przepisy Kodeksu cywilnego.</p>
-<p>2. Wszelkie zmiany umowy wymagają formy pisemnej pod rygorem nieważności.</p>
-<p>3. Umowę sporządzono w dwóch jednobrzmiących egzemplarzach, po jednym dla każdej ze stron.</p>
+<p>Umowę sporządzono w dwóch egzemplarzach.</p>
 
 ${uwagiHtml}
 
@@ -852,7 +838,7 @@ function printContract() {
     win.print();
 }
 
-/* POBIERANIE DOCX (w praktyce HTML otwierany przez Worda) */
+/* POBIERANIE DOCX */
 function downloadDocx() {
     const html = buildContractHTML();
     const blob = new Blob(
@@ -867,7 +853,37 @@ function downloadDocx() {
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
+}/* ✅ LICZNIK OGLĄDAJĄCYCH */
+function updateViewers(){
+    const el = document.getElementById("viewers");
+    if(!el) return;
+    const num = Math.floor(Math.random() * 14) + 8; // 8–22 osób
+    el.textContent = `👀 ${num} osób ogląda tę ofertę`;
 }
-</script>
-</body>
-</html>
+setInterval(updateViewers, 4000);
+updateViewers();
+
+/* ✅ FOMO – „Zostały 2 garaże!” */
+function updateUrgency() {
+    const el = document.getElementById("urgencyMsg");
+    if (!el) return;
+
+    if (freeSpaces <= 1) {
+        el.textContent = "🔥 Ostatni garaż! Kto pierwszy, ten lepszy!";
+        el.style.color = "#ef4444";
+    }
+    else if (freeSpaces === 2) {
+        el.textContent = "⚡ Zostały tylko 2 garaże!";
+        el.style.color = "#f97316";
+    }
+    else if (freeSpaces <= 3) {
+        el.textContent = "⏳ Ostatnie wolne garaże!";
+        el.style.color = "#facc15";
+    }
+    else {
+        el.textContent = "";
+    }
+}
+
+/* ✅ WYWOŁANIE FOMO PO AKTUALIZACJI */
+updateUrgency();
