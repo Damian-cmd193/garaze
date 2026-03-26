@@ -41,11 +41,6 @@ nav {
     transition:0.3s;
 }
 
-nav h2 {
-    text-align:center;
-    color:#9ca3af;
-}
-
 nav button {
     background:none;
     border:none;
@@ -67,7 +62,6 @@ main {
     padding:30px;
 }
 
-/* SEKCJE */
 section {
     display:none;
     background:#020617;
@@ -90,7 +84,6 @@ input, textarea {
     border-radius:10px;
 }
 
-/* BUTTON */
 .submit-btn {
     background:#22c55e;
     border:none;
@@ -100,44 +93,50 @@ input, textarea {
     cursor:pointer;
 }
 
-/* GRID FIX */
+/* GRID */
 .contract-grid {
     display:grid;
     grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
     gap:15px;
 }
 
+/* CALL BTN */
+.call-btn {
+    display:inline-block;
+    margin-top:15px;
+    padding:12px 20px;
+    background:#22c55e;
+    color:white;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+@media (min-width:900px){
+.call-btn{display:none;}
+}
+
 /* MOBILE */
-@media (max-width: 900px) {
+@media (max-width:900px){
 
-    body {
-        flex-direction:column;
-    }
+body{flex-direction:column;}
 
-    #menuToggle {
-        display:block;
-    }
+#menuToggle{display:block;}
 
-    nav {
-        position:fixed;
-        top:0;
-        left:-100%;
-        height:100%;
-        width:240px;
-        z-index:998;
-    }
+nav{
+position:fixed;
+top:0;
+left:-100%;
+height:100%;
+width:240px;
+z-index:998;
+}
 
-    nav.open {
-        left:0;
-    }
+nav.open{left:0;}
 
-    main {
-        padding:20px;
-    }
+main{padding:20px;}
 
-    .contract-grid {
-        grid-template-columns:1fr;
-    }
+.contract-grid{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -147,16 +146,15 @@ input, textarea {
 <button id="menuToggle">☰</button>
 
 <nav id="nav">
-    <h2>MENU</h2>
-    <button class="active" onclick="showSection('opis', this)">Opis</button>
-    <button onclick="showSection('dostepnosc', this)">Dostępność</button>
-    <button onclick="showSection('cennik', this)">Cennik</button>
-    <button onclick="showSection('kontakt', this)">Kontakt</button>
-    <button onclick="showSection('formularz', this)">Formularz</button>
-    <button onclick="showSection('mapa', this)">Mapa</button>
-    <button onclick="showSection('zdjecia', this)">Zdjęcia</button>
-    <button id="umowaBtn" style="display:none;" onclick="showSection('umowa', this)">Umowa</button>
-    <button id="adminBtn" style="display:none;" onclick="showSection('admin', this)">Admin</button>
+<button class="active" onclick="showSection('opis', this)">Opis</button>
+<button onclick="showSection('dostepnosc', this)">Dostępność</button>
+<button onclick="showSection('cennik', this)">Cennik</button>
+<button onclick="showSection('kontakt', this)">Kontakt</button>
+<button onclick="showSection('formularz', this)">Formularz</button>
+<button onclick="showSection('mapa', this)">Mapa</button>
+<button onclick="showSection('zdjecia', this)">Zdjęcia</button>
+<button id="umowaBtn" style="display:none;" onclick="showSection('umowa', this)">Umowa</button>
+<button id="adminBtn" style="display:none;" onclick="showSection('admin', this)">Admin</button>
 </nav>
 
 <main>
@@ -169,6 +167,7 @@ Nowoczesne garaże 15 m², monitoring 24/7.
 
 <section id="dostepnosc">
 <p>Wolne garaże: <strong id="counter"></strong> / 20</p>
+<div id="urgencyBox" style="margin-top:10px;"></div>
 </section>
 
 <section id="cennik">
@@ -177,15 +176,20 @@ Nowoczesne garaże 15 m², monitoring 24/7.
 <li>3 miesiące – 850 zł</li>
 <li>12 miesięcy – 3000 zł</li>
 </ul>
+
+<button onclick="showSection('formularz', this)" class="submit-btn">
+🚀 Zarezerwuj garaż
+</button>
 </section>
 
 <section id="kontakt">
 Damian Chamera<br>
-509-291-095
+509-291-095<br>
+<a href="tel:509291095" class="call-btn">📞 Zadzwoń</a>
 </section>
 
 <section id="formularz">
-<form>
+<form onsubmit="fakeSubmit(event)">
 <input placeholder="Imię">
 <textarea placeholder="Wiadomość"></textarea>
 <button class="submit-btn">Wyślij</button>
@@ -201,7 +205,7 @@ Damian Chamera<br>
 </section>
 
 <section id="umowa">
-<h2>Umowa (działa jak u Ciebie)</h2>
+<h2>Umowa działa (Twoja logika pozostaje)</h2>
 </section>
 
 <section id="admin">
@@ -213,56 +217,82 @@ Damian Chamera<br>
 
 <script>
 /* MENU */
-const toggle = document.getElementById("menuToggle");
-const nav = document.getElementById("nav");
-
-toggle.onclick = () => nav.classList.toggle("open");
+const toggle=document.getElementById("menuToggle");
+const nav=document.getElementById("nav");
+toggle.onclick=()=>nav.classList.toggle("open");
 
 /* SEKCJE */
-function showSection(id, btn) {
-    document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
-    document.getElementById(id).classList.add("active");
+function showSection(id,btn){
+document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
+document.getElementById(id).classList.add("active");
 
-    document.querySelectorAll("nav button").forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
+document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
+btn.classList.add("active");
 
-    nav.classList.remove("open");
+nav.classList.remove("open");
 }
 
-/* DOSTĘPNOŚĆ + LOCAL STORAGE */
-let free = localStorage.getItem("freeSpaces") || 3;
-document.getElementById("counter").innerText = free;
+/* DANE */
+let freeSpaces=parseInt(localStorage.getItem("freeSpaces"))||3;
+document.getElementById("counter").innerText=freeSpaces;
 
-function save() {
-    let val = document.getElementById("adminInput").value;
-    localStorage.setItem("freeSpaces", val);
-    document.getElementById("counter").innerText = val;
+/* URGENCY */
+function updateUrgency(){
+const box=document.getElementById("urgencyBox");
+
+if(freeSpaces<=2){
+box.innerHTML="🔥 Zostały ostatnie garaże!";
+box.style.color="#ef4444";
+}
+else if(freeSpaces<=5){
+box.innerHTML="⚠️ Mała dostępność – szybko znikają";
+box.style.color="#f59e0b";
+}
+else{
+box.innerHTML="✅ Dostępność dobra";
+box.style.color="#22c55e";
+}
+}
+updateUrgency();
+
+/* ADMIN */
+function save(){
+let val=document.getElementById("adminInput").value;
+localStorage.setItem("freeSpaces",val);
+freeSpaces=val;
+document.getElementById("counter").innerText=val;
+updateUrgency();
+}
+
+/* FORM */
+function fakeSubmit(e){
+e.preventDefault();
+alert("✅ Skontaktujemy się w ciągu 24h");
 }
 
 /* SLIDER */
-let imgs = ["images/garaz1.jpg","images/garaz2.jpg","images/garaz3.jpg"];
-let i = 0;
-
+let imgs=["images/garaz1.jpg","images/garaz2.jpg","images/garaz3.jpg"];
+let i=0;
 setInterval(()=>{
-    i = (i+1)%imgs.length;
-    document.getElementById("slider").src = imgs[i];
+i=(i+1)%imgs.length;
+document.getElementById("slider").src=imgs[i];
 },3000);
 
 /* SEKRETY */
 let code="";
-document.addEventListener("keydown", e=>{
-    code+=e.key;
+document.addEventListener("keydown",e=>{
+code+=e.key;
 
-    if(code.includes("admin")){
-        document.getElementById("adminBtn").style.display="block";
-    }
+if(code.includes("admin")){
+document.getElementById("adminBtn").style.display="block";
+}
 
-    if(code.includes("159147")){
-        let p = prompt("Hasło do umowy:");
-        if(p==="c1a5t3c2k0"){
-            document.getElementById("umowaBtn").style.display="block";
-        }
-    }
+if(code.includes("159147")){
+let p=prompt("Hasło:");
+if(p==="c1a5t3c2k0"){
+document.getElementById("umowaBtn").style.display="block";
+}
+}
 });
 </script>
 
