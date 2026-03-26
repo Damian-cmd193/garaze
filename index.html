@@ -398,18 +398,6 @@ button.submit-btn:hover {
             <br>
             <span id="fillText" style="color:#9ca3af;">Zapełnienie: 0%</span>
         </div>
-        <div style="margin-top:20px; font-size:18px; font-weight:bold; color:#facc15;">
-    <span id="viewersCounter">0</span> osoby oglądają teraz
-</div>
-<div id="fomoMessage" style="color:#f87171; font-weight:600; margin-top:6px;"></div>
-    </div>
-</section>
-    <section id="fomoSection" style="margin-top:20px;">
-        <div class="availability-title">Kto teraz ogląda ofertę</div>
-        <div style="font-size:24px; font-weight:bold; color:#facc15; margin:10px 0;">
-            <span id="viewersCounter">0</span> osoby oglądają teraz
-        </div>
-        <div id="fomoMessage" style="color:#f87171; font-weight:600;"></div>
     </div>
 </section>
 
@@ -880,28 +868,6 @@ function downloadDocx() {
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
 }
-    // --- LICZNIK OGLĄDAJĄCYCH + FOMO ---
-let viewers = Math.floor(Math.random() * 6) + 3; // losowo 3-8 osób na start
-const viewersCounter = document.getElementById("viewersCounter");
-const fomoMessage = document.getElementById("fomoMessage");
-
-function updateViewers() {
-    // losowe zwiększanie/zmniejszanie oglądających
-    const change = Math.floor(Math.random() * 3) - 1; // -1,0,1
-    viewers = Math.max(1, viewers + change);
-    viewersCounter.textContent = viewers;
-
-    // FOMO: gdy mało wolnych miejsc
-    if(freeSpaces <= 5){
-        fomoMessage.textContent = `🔥 Uwaga! Zostało tylko ${freeSpaces} wolnych garaży!`;
-    } else {
-        fomoMessage.textContent = '';
-    }
-}
-
-// aktualizacja co 2 sekundy
-setInterval(updateViewers, 2000);
-updateViewers();
 </script>
 </body>
 </html>
