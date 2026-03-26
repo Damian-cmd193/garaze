@@ -398,6 +398,19 @@ button.submit-btn:hover {
             <br>
             <span id="fillText" style="color:#9ca3af;">Zapełnienie: 0%</span>
         </div>
+        <div style="margin-top:20px; font-size:18px; font-weight:bold; color:#facc15;">
+    <span id="viewersCounter">0</span> osoby oglądają teraz
+</div>
+<div id="fomoMessage" style="color:#f87171; font-weight:600; margin-top:6px;"></div>
+    </div>
+</section>
+    <section id="fomoSection" style="margin-top:20px;">
+    <div class="availability-box">
+        <div class="availability-title">Kto teraz ogląda ofertę</div>
+        <div style="font-size:24px; font-weight:bold; color:#facc15; margin:10px 0;">
+            <span id="viewersCounter">0</span> osoby oglądają teraz
+        </div>
+        <div id="fomoMessage" style="color:#f87171; font-weight:600;"></div>
     </div>
 </section>
 
@@ -413,26 +426,6 @@ button.submit-btn:hover {
         </ul>
         <p>Ceny zawierają dostęp 24/7, monitoring oraz automatyczną bramę.</p>
     </div>
-    div class="availability-box" style="margin-top:20px; text-align:center;">
-    <div style="font-weight:bold; font-size:16px; margin-bottom:8px;">
-        👀 <span id="viewersCounter">0</span> osób aktualnie ogląda tę ofertę
-    </div>
-    <div id="fomoMessage" style="color:#f87171; font-weight:bold; font-size:14px;"></div>
-    <a href="tel:+48509291095" style="
-        display:inline-block;
-        margin-top:12px;
-        padding:12px 24px;
-        background:#22c55e;
-        color:white;
-        font-weight:bold;
-        border-radius:12px;
-        text-decoration:none;
-        box-shadow:0 8px 20px rgba(34,197,94,0.5);
-        transition:0.25s;
-    " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-        📞 Zadzwoń
-    </a>
-</div>
 </section>
 
 <!-- KONTAKT -->
@@ -888,19 +881,19 @@ function downloadDocx() {
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
 }
-    /* LICZNIK OGLĄDAJĄCYCH + FOMO */
-let viewers = Math.floor(Math.random() * 6) + 3; // losowo 3–8 osób
+    // --- LICZNIK OGLĄDAJĄCYCH + FOMO ---
+let viewers = Math.floor(Math.random() * 6) + 3; // losowo 3-8 osób na start
 const viewersCounter = document.getElementById("viewersCounter");
 const fomoMessage = document.getElementById("fomoMessage");
 
 function updateViewers() {
-    // symulacja zmiany liczby oglądających
-    const change = Math.floor(Math.random() * 3) - 1; // -1, 0, 1
+    // losowe zwiększanie/zmniejszanie oglądających
+    const change = Math.floor(Math.random() * 3) - 1; // -1,0,1
     viewers = Math.max(1, viewers + change);
     viewersCounter.textContent = viewers;
 
-    // FOMO: jeśli zostało mniej niż 5 garaży
-    if(freeSpaces <= 5) {
+    // FOMO: gdy mało wolnych miejsc
+    if(freeSpaces <= 5){
         fomoMessage.textContent = `🔥 Uwaga! Zostało tylko ${freeSpaces} wolnych garaży!`;
     } else {
         fomoMessage.textContent = '';
