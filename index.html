@@ -122,15 +122,51 @@ header {
     text-align:center;
     margin-bottom:30px;
 }
+/* PREMIUM nagłówek h1 z neonem i animacją shine */
 h1 {
-    font-size: 44px;
+    font-family: "Poppins", sans-serif;
+    font-size: 46px;
     font-weight: 800;
-    background: linear-gradient(90deg, #ffffff, #6ee7ff);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+
+    /* Gradient na czcionce */
+    background: linear-gradient(90deg, #ffffff, #6ee7ff, #38bdf8, #e0faff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    letter-spacing: 1px;
-    text-shadow: 0 0 20px rgba(56, 189, 248, 0.25);
-    font-family: "Montserrat", sans-serif;
+
+    /* Neonowy glow */
+    text-shadow:
+        0 0 10px rgba(56, 189, 248, 0.4),
+        0 0 20px rgba(56, 189, 248, 0.2),
+        0 0 30px rgba(56, 189, 248, 0.15);
+
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+/* Shine efekt — delikatny błysk przechodzący po literach */
+h1::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(120deg,
+        transparent,
+        rgba(255,255,255,0.6),
+        transparent
+    );
+    animation: shineMove 3s infinite ease-in-out;
+}
+
+/* Animacja shine */
+@keyframes shineMove {
+    0% { left: -100%; }
+    60% { left: 130%; }
+    100% { left: 130%; }
 }
 
 /* SEKCJE + animowane wejście */
