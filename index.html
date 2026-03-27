@@ -272,7 +272,34 @@ button.submit-btn:hover {
 .admin-form input {
     width:100%;
 }
-
+/* FAQ */
+.faq-item {
+    margin-bottom:12px;
+}
+.faq-question {
+    width:100%;
+    text-align:left;
+    background:#0f172a;
+    border:1px solid rgba(148,163,184,0.4);
+    padding:12px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:600;
+    color:#e5e7eb;
+    transition:0.25s;
+}
+.faq-question:hover {
+    background:#1e293b;
+}
+.faq-answer {
+    display:none;
+    padding:12px;
+    background:#111827;
+    border-radius:10px;
+    border:1px solid rgba(148,163,184,0.3);
+    margin-top:6px;
+    line-height:1.55;
+}
 /* UMOWA – sekcja */
 .contract-grid {
     display:grid;
@@ -348,6 +375,7 @@ button.submit-btn:hover {
     <button onclick="showSection('zdjecia', this)"><span>Zdjęcia</span></button>
     <button id="umowaBtn" onclick="showSection('umowa', this)" style="display:none;">
     Umowa</button>
+    <button onclick="showSection('faq', this)"><span>FAQ</span></button>
     <!-- Ukryty przycisk Admin -->
     <button id="adminBtn" onclick="showSection('admin', this)" style="display:none;"><span>Admin</span></button>
 </nav>
@@ -484,7 +512,106 @@ button.submit-btn:hover {
         <button class="slider-btn next" onclick="nextSlide()">❯</button>
     </div>
 </section>
+<!-- FAQ -->
+<section id="faq">
+    <div class="card">
+        <h2>FAQ – Najczęściej zadawane pytania</h2>
 
+        <div class="faq-item">
+            <button class="faq-question">1. Czy mogę trzymać w garażu motocykl?</button>
+            <div class="faq-answer">
+                Tak, trzymanie motocykla w garażu jest dozwolone. Zalecamy zakręcenie paliwa,
+                odłączenie akumulatora przy dłuższym postoju oraz unikanie przechowywania
+                materiałów łatwopalnych.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">2. Czy mogę przechowywać inne rzeczy niż pojazdy?</button>
+            <div class="faq-answer">
+                Tak, o ile nie są to przedmioty niebezpieczne lub łatwopalne. Garaż może
+                służyć jako dodatkowa przestrzeń magazynowa.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">3. Jak wygląda płatność?</button>
+            <div class="faq-answer">
+                Opłata odbywa się miesięcznie, z góry, zgodnie z umową. Możliwa jest płatność
+                przelewem lub gotówką.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">4. Czy teren garaży jest monitorowany?</button>
+            <div class="faq-answer">
+                Tak, teren jest monitorowany 24/7. Kamery obejmują wjazdy i części wspólne.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">5. Czy monitoring nagrywa wnętrze garażu?</button>
+            <div class="faq-answer">
+                Nie. Monitoring obejmuje tylko teren zewnętrzny. Wnętrza garaży pozostają prywatne.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">6. Czy nagrania są przechowywane?</button>
+            <div class="faq-answer">
+                Tak, nagrania przechowywane są przez wymagany prawem czas i mogą zostać
+                udostępnione służbom w razie incydentu.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">7. Czy mogę otrzymać dostęp do nagrań?</button>
+            <div class="faq-answer">
+                Tak, w uzasadnionych sytuacjach (np. szkoda, próba włamania) najemca może poprosić
+                o wgląd w nagrania.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">8. Czy garaż jest ubezpieczony?</button>
+            <div class="faq-answer">
+                Ubezpieczenie obejmuje konstrukcję garażu. Przedmioty i pojazdy wewnątrz nie
+                są objęte — warto rozważyć własne AC/OC lub polisę mienia.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">9. Co jeśli zgubię klucz?</button>
+            <div class="faq-answer">
+                Skontaktuj się z obsługą. Konieczna będzie wymiana wkładki lub dorobienie klucza.
+                Koszt pokrywa najemca.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">10. Czy mogę otrzymać dodatkowy komplet kluczy?</button>
+            <div class="faq-answer">
+                Tak, istnieje taka możliwość za dodatkową opłatą.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">11. Na jaki okres mogę wynająć garaż?</button>
+            <div class="faq-answer">
+                Minimalny okres to zwykle 1–3 miesiące. Dłuższy wynajem jest możliwy bez ograniczeń.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">12. Jak mogę rozwiązać umowę?</button>
+            <div class="faq-answer">
+                Zgodnie z okresem wypowiedzenia w umowie — najczęściej 1 miesiąc. Szczegóły znajdują
+                się w dokumencie umowy.
+            </div>
+        </div>
+
+    </div>
+</section>
 <!-- UMOWA -->
 <section id="umowa">
     <div class="card">
@@ -868,6 +995,13 @@ function downloadDocx() {
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
 }
+    // FAQ accordion
+document.querySelectorAll(".faq-question").forEach(btn => {
+    btn.addEventListener("click", () => {
+        const ans = btn.nextElementSibling;
+        ans.style.display = ans.style.display === "block" ? "none" : "block";
+    });
+});
 </script>
 </body>
 </html>
