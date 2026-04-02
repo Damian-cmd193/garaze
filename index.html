@@ -1269,12 +1269,21 @@ document.querySelectorAll(".faq-question").forEach(btn => {
     });
 });
 </script>
-    <script>
+   <script>
 const toggle = document.querySelector('.menu-toggle');
 const nav = document.querySelector('nav');
+const navButtons = document.querySelectorAll('nav button:not(.menu-toggle)');
 
+// Klik w hamburger rozwija lub chowa menu
 toggle.addEventListener('click', () => {
     nav.classList.toggle('active');
+});
+
+// Klik w dowolny przycisk menu – chowa menu
+navButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        nav.classList.remove('active');
+    });
 });
 </script>
 </body>
