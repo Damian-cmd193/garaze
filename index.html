@@ -410,6 +410,81 @@ button.submit-btn:hover {
     margin-top: 6px;
     letter-spacing: 0.6px;
 }
+        /* ————————————————————————————— */
+/* MOBILNE HAMBURGER MENU */
+/* ————————————————————————————— */
+.menu-toggle {
+    display: none; /* domyślnie ukryte na desktopie */
+    font-size: 28px;
+    cursor: pointer;
+    user-select: none;
+    color: var(--accent);
+    position: absolute;
+    right: 20px;
+    top: 18px;
+}
+
+@media (max-width: 768px) {
+
+    /* Pokaż hamburger na telefonach */
+    .menu-toggle {
+        display: block;
+    }
+
+    /* Nawigacja mobilna */
+    nav {
+        position: fixed;
+        top: 0;
+        left: -100%; /* ukryta poza ekranem */
+        width: 75%;
+        height: 100%;
+        background: var(--bg-dark);
+        display: flex;
+        flex-direction: column;
+        padding-top: 70px;
+        transition: left 0.3s ease;
+        z-index: 1000;
+    }
+
+    /* Po kliknięciu hamburgera */
+    nav.active {
+        left: 0;
+    }
+
+    /* Lista linków w kolumnę */
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding: 0 20px;
+        margin: 0;
+        align-items: flex-start;
+    }
+
+    /* Linki menu */
+    nav ul li a {
+        width: 100%;
+        text-align: left;
+        padding: 12px 15px;
+        background: var(--bg-light);
+        border-radius: 8px;
+        color: var(--text-main);
+        text-decoration: none;
+        display: block;
+        font-size: 16px;
+        transition: background 0.25s, color 0.25s;
+    }
+
+    nav ul li a:hover {
+        background: var(--card);
+        color: var(--accent);
+    }
+
+    header {
+        position: relative;
+        padding: 10px 20px;
+    }
+}
 </style>
 </head>
 
@@ -1164,5 +1239,28 @@ document.querySelectorAll(".faq-question").forEach(btn => {
     });
 });
 </script>
+     // Tworzymy ikonę hamburgera
+    const toggle = document.createElement('div');
+    toggle.classList.add('menu-toggle');
+    toggle.innerHTML = '&#9776;'; // ☰
+
+    const header = document.querySelector('header');
+    header.appendChild(toggle);
+
+    const nav = document.querySelector('nav');
+
+    // Kliknięcie hamburgera rozwija/zwija menu
+    toggle.addEventListener('click', () => {
+        nav.classList.toggle('active');
+    });
+
+    // Kliknięcie w link menu zawsze chowa menu
+    const navLinks = nav.querySelectorAll('a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            nav.classList.remove('active');
+        });
+    });
+});
 </body>
 </html>
