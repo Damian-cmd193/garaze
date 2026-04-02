@@ -410,120 +410,111 @@ button.submit-btn:hover {
     margin-top: 6px;
     letter-spacing: 0.6px;
 }
-    /* Hamburger – domyślnie ukryty */
+  /* Hamburger */
 .menu-toggle {
     display: none;
     font-size: 28px;
     cursor: pointer;
-    color: #22c55e;
     position: absolute;
-    top: 18px;
-    left: 18px;
-    z-index: 100;
+    top: 10px;
+    right: 10px;
 }
 
-/* Mobile menu */
-@media (max-width: 900px) {
-    nav {
-        position: fixed;
-        left: -260px; /* ukryte poza ekranem */
-        top: 0;
-        height: 100%;
-        width: 260px;
-        transition: left 0.3s ease;
-        z-index: 99;
-    }
-
-    nav.active {
-        left: 0; /* wysuwanie menu */
-    }
-
-    .menu-toggle {
-        display: block; /* hamburger widoczny na mobile */
-    }
-
-    main {
-        padding: 20px;
-    }
-}
-    /* Hamburger – domyślnie ukryty */
-.menu-toggle {
-    display: none; /* desktop */
-    font-size: 28px;
-    cursor: pointer;
-    color: var(--accent, #22c55e);
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
-}
-
-/* Media query – mobile do 700px */
+/* Mobilne menu */
 @media (max-width: 700px) {
+    nav h2, nav button {
+        display: none;
+    }
+    nav.open h2, nav.open button {
+        display: block;
+    }
     .menu-toggle {
-        display: block; /* pokaż hamburger na mobilnym */
-    }
-    
-    nav {
-        position: fixed;
-        left: -260px; /* schowane menu */
-        top: 0;
-        width: 250px;
-        height: 100%;
-        background: #111; /* dopasuj do swojego designu */
-        flex-direction: column;
-        padding-top: 60px; /* żeby nie nachodziło na hamburger */
-        transition: left 0.3s ease;
-        z-index: 999;
-    }
-    
-    nav.open {
-        left: 0; /* wysunięte menu */
-    }
-    
-    nav button {
-        width: 100%;
-        text-align: left;
-        padding: 12px 20px;
+        display: block;
     }
 }
 </style>
 </head>
-
 <body>
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-   <nav>
-    <!-- Hamburger na mobilne -->
-    
+   
+  <!-- Hamburger -->
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+<nav>
     <h2>MENU <span class="car">🚗</span></h2>
-    <button class="active" onclick="showSection('opis', this)"><span>Opis</span></button>
-    <button onclick="showSection('dostepnosc', this)"><span>Dostępność</span></button>
-    <button onclick="showSection('cennik', this)"><span>Cennik</span></button>
-    <button onclick="showSection('kontakt', this)"><span>Kontakt</span></button>
-    <button onclick="showSection('formularz', this)"><span>Formularz</span></button>
-    <button onclick="showSection('mapa', this)"><span>Mapa</span></button>
-    <button onclick="showSection('zdjecia', this)"><span>Zdjęcia</span></button>
+    <button class="active" onclick="showSection('opis', this)">Opis</button>
+    <button onclick="showSection('dostepnosc', this)">Dostępność</button>
+    <button onclick="showSection('cennik', this)">Cennik</button>
+    <button onclick="showSection('kontakt', this)">Kontakt</button>
+    <button onclick="showSection('formularz', this)">Formularz</button>
+    <button onclick="showSection('mapa', this)">Mapa</button>
+    <button onclick="showSection('zdjecia', this)">Zdjęcia</button>
     <button id="umowaBtn" onclick="showSection('umowa', this)" style="display:none;">Umowa</button>
-    <button onclick="showSection('faq', this)"><span>FAQ</span></button>
-    <button onclick="showSection('dlaczego', this)"><span>Dlaczego warto?</span></button>
-    <button onclick="showSection('proces', this)"><span>Proces wynajmu</span></button>
-    <button id="adminBtn" onclick="showSection('admin', this)" style="display:none;"><span>Admin</span></button>
+    <button onclick="showSection('faq', this)">FAQ</button>
+    <button onclick="showSection('dlaczego', this)">Dlaczego warto?</button>
+    <button onclick="showSection('proces', this)">Proces wynajmu</button>
+    <button id="adminBtn" onclick="showSection('admin', this)" style="display:none;">Admin</button>
 </nav>
 
 <!-- Sekcje -->
-<section id="opis">Treść sekcji Opis</section>
-<section id="dostepnosc">Treść sekcji Dostępność</section>
-<section id="cennik">Treść sekcji Cennik</section>
-<section id="kontakt">Treść sekcji Kontakt</section>
-<section id="formularz">Treść sekcji Formularz</section>
-<section id="mapa">Treść sekcji Mapa</section>
-<section id="zdjecia">Treść sekcji Zdjęcia</section>
-<section id="umowa">Treść sekcji Umowa</section>
-<section id="faq">Treść sekcji FAQ</section>
-<section id="dlaczego">Treść sekcji Dlaczego warto?</section>
-<section id="proces">Treść sekcji Proces wynajmu</section>
-<section id="admin">Treść sekcji Admin</section>
+<section id="opis">
+    <h3>Opis</h3>
+    <p>Tu wstaw opis oferty.</p>
+</section>
 
+<section id="dostepnosc" style="display:none">
+    <h3>Dostępność</h3>
+    <p>Informacje o dostępności.</p>
+</section>
+
+<section id="cennik" style="display:none">
+    <h3>Cennik</h3>
+    <p>Ceny wynajmu.</p>
+</section>
+
+<section id="kontakt" style="display:none">
+    <h3>Kontakt</h3>
+    <p>Dane kontaktowe.</p>
+</section>
+
+<section id="formularz" style="display:none">
+    <h3>Formularz</h3>
+    <p>Tu będzie formularz kontaktowy.</p>
+</section>
+
+<section id="mapa" style="display:none">
+    <h3>Mapa</h3>
+    <p>Mapa lokalizacji garażu.</p>
+</section>
+
+<section id="zdjecia" style="display:none">
+    <h3>Zdjęcia</h3>
+    <p>Galeria zdjęć garażu.</p>
+</section>
+
+<section id="umowa" style="display:none">
+    <h3>Umowa</h3>
+    <p>Treść umowy do pobrania.</p>
+</section>
+
+<section id="faq" style="display:none">
+    <h3>FAQ</h3>
+    <p>Najczęściej zadawane pytania.</p>
+</section>
+
+<section id="dlaczego" style="display:none">
+    <h3>Dlaczego warto?</h3>
+    <p>Powody, dla których warto wynająć garaż u nas.</p>
+</section>
+
+<section id="proces" style="display:none">
+    <h3>Proces wynajmu</h3>
+    <p>Opis procesu wynajmu krok po kroku.</p>
+</section>
+
+<section id="admin" style="display:none">
+    <h3>Admin</h3>
+    <p>Panel administracyjny.</p>
+</section>
 <main>
 <header>
     <h1>Wynajmij Garaż w Najlepszej Lokalizacji</h1>
@@ -1278,23 +1269,25 @@ function showSection(id, btn) {
     }
 }
 </script>
-    <script>
+ <script>
 function toggleMenu() {
     document.querySelector('nav').classList.toggle('open');
 }
 
-function showSection(section, btn) {
-    // Pokaż wybraną sekcję, ukryj resztę
+function showSection(id, btn) {
+    // Ukryj wszystkie sekcje
     const sections = document.querySelectorAll('section');
     sections.forEach(sec => sec.style.display = 'none');
-    document.getElementById(section).style.display = 'block';
 
-    // Zmień aktywny przycisk
+    // Pokaż wybraną sekcję
+    document.getElementById(id).style.display = 'block';
+
+    // Aktywny przycisk
     const buttons = document.querySelectorAll('nav button');
     buttons.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
 
-    // ZAMYKA MENU NA MOBILKACH
+    // Zamknij menu mobilne po kliknięciu
     if (window.innerWidth <= 700) {
         document.querySelector('nav').classList.remove('open');
     }
