@@ -942,7 +942,20 @@ document.addEventListener("keydown", (e) => {
     }
 });
 
-document.addEventListener("DOMContentLoaded", () => {
+const freeRef = db.ref("freeSpaces");
+
+freeRef.on("value", (snapshot) => {
+    const data = snapshot.val();
+
+    if (data !== null) {
+        freeSpaces = data;
+    }
+
+    document.getElementById("totalSpan").textContent = totalSpaces;
+    document.getElementById("adminFreeInput").value = freeSpaces;
+
+    updateAvailabilityUI();
+});
 
     // ✅ ODCZYT z localStorage
     const saved = localStorage.getItem("freeSpaces");
@@ -1007,16 +1020,20 @@ function animateCounter() {
 
 function saveFreeSpaces(e) {
     e.preventDefault();
+
     const val = parseInt(document.getElementById("adminFreeInput").value, 10);
+
     if (isNaN(val) || val < 0 || val > totalSpaces) {
         alert("Podaj liczbę z zakresu 0–" + totalSpaces);
         return;
     }
+
     freeSpaces = val;
 
-     localStorage.setItem("freeSpaces", freeSpaces);
-    updateAvailabilityUI();
-    alert("Zapisano nową liczbę wolnych garaży: " + freeSpaces);
+    // 🔥 zapis online
+    db.ref("freeSpaces").set(freeSpaces);
+
+    alert("Zapisano online ✅");
 }
 
 /* SLIDER */
