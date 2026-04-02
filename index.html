@@ -410,11 +410,49 @@ button.submit-btn:hover {
     margin-top: 6px;
     letter-spacing: 0.6px;
 }
+    /* Hamburger – domyślnie ukryty */
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #22c55e;
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    z-index: 100;
+}
+
+/* Mobile menu */
+@media (max-width: 900px) {
+    nav {
+        position: fixed;
+        left: -260px; /* ukryte poza ekranem */
+        top: 0;
+        height: 100%;
+        width: 260px;
+        transition: left 0.3s ease;
+        z-index: 99;
+    }
+
+    nav.active {
+        left: 0; /* wysuwanie menu */
+    }
+
+    .menu-toggle {
+        display: block; /* hamburger widoczny na mobile */
+    }
+
+    main {
+        padding: 20px;
+    }
+}
 </style>
 </head>
 
 <body>
 <nav>
+    <!-- Hamburger na mobilne -->
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
     <h2>MENU <span class="car">🚗</span></h2>
     <button class="active" onclick="showSection('opis', this)"><span>Opis</span></button>
     <button onclick="showSection('dostepnosc', this)"><span>Dostępność</span></button>
@@ -1163,6 +1201,28 @@ document.querySelectorAll(".faq-question").forEach(btn => {
         ans.style.display = ans.style.display === "block" ? "none" : "block";
     });
 });
+</script>
+    <script>
+function toggleMenu() {
+    const nav = document.querySelector('nav');
+    nav.classList.toggle('active');
+}
+
+// Obsługa zmiany sekcji
+function showSection(id, btn) {
+    // Ukryj wszystkie sekcje
+    document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+
+    // Aktywuj przycisk
+    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    // Zamknij menu na mobile po kliknięciu
+    if (window.innerWidth <= 900) {
+        document.querySelector('nav').classList.remove('active');
+    }
+}
 </script>
 </body>
 </html>
