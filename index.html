@@ -410,111 +410,28 @@ button.submit-btn:hover {
     margin-top: 6px;
     letter-spacing: 0.6px;
 }
-  /* Hamburger */
-.menu-toggle {
-    display: none;
-    font-size: 28px;
-    cursor: pointer;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-}
-
-/* Mobilne menu */
-@media (max-width: 700px) {
-    nav h2, nav button {
-        display: none;
-    }
-    nav.open h2, nav.open button {
-        display: block;
-    }
-    .menu-toggle {
-        display: block;
-    }
-}
 </style>
 </head>
-<body>
-   
-  <!-- Hamburger -->
-<div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
+<body>
 <nav>
     <h2>MENU <span class="car">🚗</span></h2>
-    <button class="active" onclick="showSection('opis', this)">Opis</button>
-    <button onclick="showSection('dostepnosc', this)">Dostępność</button>
-    <button onclick="showSection('cennik', this)">Cennik</button>
-    <button onclick="showSection('kontakt', this)">Kontakt</button>
-    <button onclick="showSection('formularz', this)">Formularz</button>
-    <button onclick="showSection('mapa', this)">Mapa</button>
-    <button onclick="showSection('zdjecia', this)">Zdjęcia</button>
-    <button id="umowaBtn" onclick="showSection('umowa', this)" style="display:none;">Umowa</button>
-    <button onclick="showSection('faq', this)">FAQ</button>
-    <button onclick="showSection('dlaczego', this)">Dlaczego warto?</button>
-    <button onclick="showSection('proces', this)">Proces wynajmu</button>
-    <button id="adminBtn" onclick="showSection('admin', this)" style="display:none;">Admin</button>
+    <button class="active" onclick="showSection('opis', this)"><span>Opis</span></button>
+    <button onclick="showSection('dostepnosc', this)"><span>Dostępność</span></button>
+    <button onclick="showSection('cennik', this)"><span>Cennik</span></button>
+    <button onclick="showSection('kontakt', this)"><span>Kontakt</span></button>
+    <button onclick="showSection('formularz', this)"><span>Formularz</span></button>
+    <button onclick="showSection('mapa', this)"><span>Mapa</span></button>
+    <button onclick="showSection('zdjecia', this)"><span>Zdjęcia</span></button>
+    <button id="umowaBtn" onclick="showSection('umowa', this)" style="display:none;">
+    Umowa</button>
+    <button onclick="showSection('faq', this)"><span>FAQ</span></button>
+    <button onclick="showSection('dlaczego', this)"><span>Dlaczego warto?</span></button>
+    <button onclick="showSection('proces', this)"><span>Proces wynajmu</span></button>
+    <!-- Ukryty przycisk Admin -->
+    <button id="adminBtn" onclick="showSection('admin', this)" style="display:none;"><span>Admin</span></button>
 </nav>
 
-<!-- Sekcje -->
-<section id="opis">
-    <h3>Opis</h3>
-    <p>Tu wstaw opis oferty.</p>
-</section>
-
-<section id="dostepnosc" style="display:none">
-    <h3>Dostępność</h3>
-    <p>Informacje o dostępności.</p>
-</section>
-
-<section id="cennik" style="display:none">
-    <h3>Cennik</h3>
-    <p>Ceny wynajmu.</p>
-</section>
-
-<section id="kontakt" style="display:none">
-    <h3>Kontakt</h3>
-    <p>Dane kontaktowe.</p>
-</section>
-
-<section id="formularz" style="display:none">
-    <h3>Formularz</h3>
-    <p>Tu będzie formularz kontaktowy.</p>
-</section>
-
-<section id="mapa" style="display:none">
-    <h3>Mapa</h3>
-    <p>Mapa lokalizacji garażu.</p>
-</section>
-
-<section id="zdjecia" style="display:none">
-    <h3>Zdjęcia</h3>
-    <p>Galeria zdjęć garażu.</p>
-</section>
-
-<section id="umowa" style="display:none">
-    <h3>Umowa</h3>
-    <p>Treść umowy do pobrania.</p>
-</section>
-
-<section id="faq" style="display:none">
-    <h3>FAQ</h3>
-    <p>Najczęściej zadawane pytania.</p>
-</section>
-
-<section id="dlaczego" style="display:none">
-    <h3>Dlaczego warto?</h3>
-    <p>Powody, dla których warto wynająć garaż u nas.</p>
-</section>
-
-<section id="proces" style="display:none">
-    <h3>Proces wynajmu</h3>
-    <p>Opis procesu wynajmu krok po kroku.</p>
-</section>
-
-<section id="admin" style="display:none">
-    <h3>Admin</h3>
-    <p>Panel administracyjny.</p>
-</section>
 <main>
 <header>
     <h1>Wynajmij Garaż w Najlepszej Lokalizacji</h1>
@@ -1246,52 +1163,6 @@ document.querySelectorAll(".faq-question").forEach(btn => {
         ans.style.display = ans.style.display === "block" ? "none" : "block";
     });
 });
-</script>
-    <script>
-function toggleMenu() {
-    const nav = document.querySelector('nav');
-    nav.classList.toggle('active');
-}
-
-// Obsługa zmiany sekcji
-function showSection(id, btn) {
-    // Ukryj wszystkie sekcje
-    document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-
-    // Aktywuj przycisk
-    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-
-    // Zamknij menu na mobile po kliknięciu
-    if (window.innerWidth <= 900) {
-        document.querySelector('nav').classList.remove('active');
-    }
-}
-</script>
- <script>
-function toggleMenu() {
-    document.querySelector('nav').classList.toggle('open');
-}
-
-function showSection(id, btn) {
-    // Ukryj wszystkie sekcje
-    const sections = document.querySelectorAll('section');
-    sections.forEach(sec => sec.style.display = 'none');
-
-    // Pokaż wybraną sekcję
-    document.getElementById(id).style.display = 'block';
-
-    // Aktywny przycisk
-    const buttons = document.querySelectorAll('nav button');
-    buttons.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-
-    // Zamknij menu mobilne po kliknięciu
-    if (window.innerWidth <= 700) {
-        document.querySelector('nav').classList.remove('open');
-    }
-}
 </script>
 </body>
 </html>
