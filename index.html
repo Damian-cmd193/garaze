@@ -491,9 +491,9 @@ button.submit-btn:hover {
 </head>
 
 <body>
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-<nav>
+   <nav>
     <!-- Hamburger na mobilne -->
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
     <h2>MENU <span class="car">🚗</span></h2>
     <button class="active" onclick="showSection('opis', this)"><span>Opis</span></button>
     <button onclick="showSection('dostepnosc', this)"><span>Dostępność</span></button>
@@ -502,14 +502,26 @@ button.submit-btn:hover {
     <button onclick="showSection('formularz', this)"><span>Formularz</span></button>
     <button onclick="showSection('mapa', this)"><span>Mapa</span></button>
     <button onclick="showSection('zdjecia', this)"><span>Zdjęcia</span></button>
-    <button id="umowaBtn" onclick="showSection('umowa', this)" style="display:none;">
-    Umowa</button>
+    <button id="umowaBtn" onclick="showSection('umowa', this)" style="display:none;">Umowa</button>
     <button onclick="showSection('faq', this)"><span>FAQ</span></button>
     <button onclick="showSection('dlaczego', this)"><span>Dlaczego warto?</span></button>
     <button onclick="showSection('proces', this)"><span>Proces wynajmu</span></button>
-    <!-- Ukryty przycisk Admin -->
     <button id="adminBtn" onclick="showSection('admin', this)" style="display:none;"><span>Admin</span></button>
 </nav>
+
+<!-- Sekcje -->
+<section id="opis">Treść sekcji Opis</section>
+<section id="dostepnosc">Treść sekcji Dostępność</section>
+<section id="cennik">Treść sekcji Cennik</section>
+<section id="kontakt">Treść sekcji Kontakt</section>
+<section id="formularz">Treść sekcji Formularz</section>
+<section id="mapa">Treść sekcji Mapa</section>
+<section id="zdjecia">Treść sekcji Zdjęcia</section>
+<section id="umowa">Treść sekcji Umowa</section>
+<section id="faq">Treść sekcji FAQ</section>
+<section id="dlaczego">Treść sekcji Dlaczego warto?</section>
+<section id="proces">Treść sekcji Proces wynajmu</section>
+<section id="admin">Treść sekcji Admin</section>
 
 <main>
 <header>
