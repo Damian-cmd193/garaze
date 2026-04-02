@@ -466,17 +466,21 @@ button.submit-btn:hover {
 }
     /* MOBILNE MENU */
 @media (max-width: 768px) {
-    body {
-        flex-direction: column; /* menu nad treścią */
-        height: auto;
+    nav {
+        position: fixed;
+        top: 0;
+        left: -260px; /* ukryte menu */
+        width: 260px;
+        height: 100%;
+        padding: 24px 18px;
+        background: radial-gradient(circle at top left, #1f2937 0%, #020617 55%, #000000 100%);
+        box-shadow: 2px 0 12px rgba(0,0,0,0.75);
+        z-index: 1000;
+        transition: left 0.4s cubic-bezier(0.77, 0, 0.175, 1); /* płynny easing */
     }
 
-    nav {
-        width: 100%;
-        padding: 16px;
-        border-right: none;
-        border-bottom: 1px solid rgba(148,163,184,0.35);
-        position: relative;
+    nav.active {
+        left: 0; /* wysuwanie */
     }
 
     .menu-toggle {
@@ -484,15 +488,14 @@ button.submit-btn:hover {
         font-size: 28px;
         cursor: pointer;
         color: #38bdf8;
-        position: absolute;
+        position: fixed;
         top: 16px;
         right: 16px;
-        z-index: 3;
+        z-index: 1100;
     }
 
-    /* Ukrywamy wszystkie przyciski oprócz tytułu na start */
     nav button {
-        display: none;
+        display: block;
         width: 100%;
         margin: 6px 0;
         text-align: left;
@@ -502,15 +505,25 @@ button.submit-btn:hover {
         font-size: 16px;
         padding: 10px 0;
         cursor: pointer;
+        transition: transform 0.3s ease, opacity 0.3s ease; /* animacja przycisków */
+        opacity: 0;
+        transform: translateX(-20px);
     }
 
-    /* Pokazujemy tylko aktywne menu po kliknięciu hamburgera */
+    /* Pokaż przyciski z animacją, gdy menu aktywne */
     nav.active button {
-        display: block;
+        opacity: 1;
+        transform: translateX(0);
     }
 
     main {
         padding: 16px;
+        margin-left: 0;
+        transition: margin-left 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    nav.active ~ main {
+        margin-left: 260px; /* treść przesuwa się razem z menu */
     }
 }
 </style>
