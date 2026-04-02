@@ -446,6 +446,47 @@ button.submit-btn:hover {
         padding: 20px;
     }
 }
+    /* Hamburger – domyślnie ukryty */
+.menu-toggle {
+    display: none; /* desktop */
+    font-size: 28px;
+    cursor: pointer;
+    color: var(--accent, #22c55e);
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+/* Media query – mobile do 700px */
+@media (max-width: 700px) {
+    .menu-toggle {
+        display: block; /* pokaż hamburger na mobilnym */
+    }
+    
+    nav {
+        position: fixed;
+        left: -260px; /* schowane menu */
+        top: 0;
+        width: 250px;
+        height: 100%;
+        background: #111; /* dopasuj do swojego designu */
+        flex-direction: column;
+        padding-top: 60px; /* żeby nie nachodziło na hamburger */
+        transition: left 0.3s ease;
+        z-index: 999;
+    }
+    
+    nav.open {
+        left: 0; /* wysunięte menu */
+    }
+    
+    nav button {
+        width: 100%;
+        text-align: left;
+        padding: 12px 20px;
+    }
+}
 </style>
 </head>
 
@@ -1222,6 +1263,12 @@ function showSection(id, btn) {
     if (window.innerWidth <= 900) {
         document.querySelector('nav').classList.remove('active');
     }
+}
+</script>
+    <script>
+function toggleMenu() {
+    const nav = document.querySelector('nav');
+    nav.classList.toggle('open'); // dodaje/usuwa klasę open
 }
 </script>
 </body>
