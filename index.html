@@ -1267,8 +1267,24 @@ function showSection(id, btn) {
 </script>
     <script>
 function toggleMenu() {
-    const nav = document.querySelector('nav');
-    nav.classList.toggle('open'); // dodaje/usuwa klasę open
+    document.querySelector('nav').classList.toggle('open');
+}
+
+function showSection(section, btn) {
+    // Pokaż wybraną sekcję, ukryj resztę
+    const sections = document.querySelectorAll('section');
+    sections.forEach(sec => sec.style.display = 'none');
+    document.getElementById(section).style.display = 'block';
+
+    // Zmień aktywny przycisk
+    const buttons = document.querySelectorAll('nav button');
+    buttons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    // ZAMYKA MENU NA MOBILKACH
+    if (window.innerWidth <= 700) {
+        document.querySelector('nav').classList.remove('open');
+    }
 }
 </script>
 </body>
