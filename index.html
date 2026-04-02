@@ -882,22 +882,7 @@ button.submit-btn:hover {
 </section>
 </main>
 
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
-    
 <script>
-    // 🔥 FIREBASE INIT
-    const firebaseConfig = {
-  apiKey: "AIzaSyAqhhnao_zPZdc8Ey2nozP0pV_6S70F6Nk",
-  authDomain: "garaze-86dbf.firebaseapp.com",
-  projectId: "garaze-86dbf",
-  storageBucket: "garaze-86dbf.firebasestorage.app",
-  messagingSenderId: "457201768614",
-  appId: "1:457201768614:web:82f5efbe6b8a58c78bfc67",
-  measurementId: "G-K694FZRKF4"
-};
-    firebase.initializeApp(firebaseConfig);
-const db = firebase.database();
 let totalSpaces = 20;
 let freeSpaces = 3;
 let counterAnimated = false;
@@ -942,30 +927,9 @@ document.addEventListener("keydown", (e) => {
     }
 });
 
-const freeRef = db.ref("freeSpaces");
-
-freeRef.on("value", (snapshot) => {
-    const data = snapshot.val();
-
-    if (data !== null) {
-        freeSpaces = data;
-    }
-
+document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("totalSpan").textContent = totalSpaces;
     document.getElementById("adminFreeInput").value = freeSpaces;
-
-    updateAvailabilityUI();
-});
-
-    // ✅ ODCZYT z localStorage
-    const saved = localStorage.getItem("freeSpaces");
-    if (saved !== null) {
-        freeSpaces = parseInt(saved, 10);
-    }
-
-    document.getElementById("totalSpan").textContent = totalSpaces;
-    document.getElementById("adminFreeInput").value = freeSpaces;
-
     updateAvailabilityUI();
 });
 
@@ -1020,20 +984,14 @@ function animateCounter() {
 
 function saveFreeSpaces(e) {
     e.preventDefault();
-
     const val = parseInt(document.getElementById("adminFreeInput").value, 10);
-
     if (isNaN(val) || val < 0 || val > totalSpaces) {
         alert("Podaj liczbę z zakresu 0–" + totalSpaces);
         return;
     }
-
     freeSpaces = val;
-
-    // 🔥 zapis online
-    db.ref("freeSpaces").set(freeSpaces);
-
-    alert("Zapisano online ✅");
+    updateAvailabilityUI();
+    alert("Zapisano nową liczbę wolnych garaży: " + freeSpaces);
 }
 
 /* SLIDER */
@@ -1199,12 +1157,10 @@ function downloadDocx() {
     URL.revokeObjectURL(url);
 }
     // FAQ accordion
-document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll(".faq-question").forEach(btn => {
-        btn.addEventListener("click", () => {
-            const ans = btn.nextElementSibling;
-            ans.style.display = ans.style.display === "block" ? "none" : "block";
-        });
+document.querySelectorAll(".faq-question").forEach(btn => {
+    btn.addEventListener("click", () => {
+        const ans = btn.nextElementSibling;
+        ans.style.display = ans.style.display === "block" ? "none" : "block";
     });
 });
 </script>
