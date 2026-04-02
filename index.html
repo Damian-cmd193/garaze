@@ -410,11 +410,66 @@ button.submit-btn:hover {
     margin-top: 6px;
     letter-spacing: 0.6px;
 }
+    /* WERSJA MOBILNA */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column; /* menu nad treścią */
+        height: auto; /* pozwala scrollować */
+    }
+
+    nav {
+        width: 100%; /* menu zajmuje całą szerokość */
+        padding: 16px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.5);
+        border-right: none;
+        border-bottom: 1px solid rgba(148,163,184,0.35);
+        border-radius: 0;
+    }
+
+    nav::before {
+        inset: 5px 0 5px 0; /* dopasowanie obramowania */
+        border-radius: 0;
+    }
+
+    nav h2 {
+        font-size: 16px;
+        gap: 4px;
+    }
+
+    main {
+        flex: 1;
+        padding: 16px;
+    }
+
+    /* Menu hamburger dla mobilnych */
+    .menu-toggle {
+        display: block; /* pokazujemy przycisk hamburger */
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        font-size: 28px;
+        cursor: pointer;
+        color: #38bdf8;
+        z-index: 3;
+    }
+
+    nav ul {
+        display: none; /* ukryj menu na start */
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 16px;
+    }
+
+    nav.active ul {
+        display: flex; /* pokaż menu po kliknięciu hamburgera */
+    }
+}
 </style>
 </head>
 
 <body>
 <nav>
+    <div class="menu-toggle">☰</div>
     <h2>MENU <span class="car">🚗</span></h2>
     <button class="active" onclick="showSection('opis', this)"><span>Opis</span></button>
     <button onclick="showSection('dostepnosc', this)"><span>Dostępność</span></button>
@@ -1162,6 +1217,14 @@ document.querySelectorAll(".faq-question").forEach(btn => {
         const ans = btn.nextElementSibling;
         ans.style.display = ans.style.display === "block" ? "none" : "block";
     });
+});
+</script>
+    <script>
+const toggle = document.querySelector('.menu-toggle');
+const nav = document.querySelector('nav');
+
+toggle.addEventListener('click', () => {
+    nav.classList.toggle('active');
 });
 </script>
 </body>
