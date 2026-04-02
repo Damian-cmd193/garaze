@@ -882,7 +882,22 @@ button.submit-btn:hover {
 </section>
 </main>
 
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+    
 <script>
+    // 🔥 FIREBASE INIT
+    const firebaseConfig = {
+  apiKey: "AIzaSyAqhhnao_zPZdc8Ey2nozP0pV_6S70F6Nk",
+  authDomain: "garaze-86dbf.firebaseapp.com",
+  projectId: "garaze-86dbf",
+  storageBucket: "garaze-86dbf.firebasestorage.app",
+  messagingSenderId: "457201768614",
+  appId: "1:457201768614:web:82f5efbe6b8a58c78bfc67",
+  measurementId: "G-K694FZRKF4"
+};
+    firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
 let totalSpaces = 20;
 let freeSpaces = 3;
 let counterAnimated = false;
