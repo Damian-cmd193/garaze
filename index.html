@@ -928,8 +928,16 @@ document.addEventListener("keydown", (e) => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+
+    // ✅ ODCZYT z localStorage
+    const saved = localStorage.getItem("freeSpaces");
+    if (saved !== null) {
+        freeSpaces = parseInt(saved, 10);
+    }
+
     document.getElementById("totalSpan").textContent = totalSpaces;
     document.getElementById("adminFreeInput").value = freeSpaces;
+
     updateAvailabilityUI();
 });
 
@@ -990,6 +998,8 @@ function saveFreeSpaces(e) {
         return;
     }
     freeSpaces = val;
+
+     localStorage.setItem("freeSpaces", freeSpaces);
     updateAvailabilityUI();
     alert("Zapisano nową liczbę wolnych garaży: " + freeSpaces);
 }
@@ -1157,10 +1167,12 @@ function downloadDocx() {
     URL.revokeObjectURL(url);
 }
     // FAQ accordion
-document.querySelectorAll(".faq-question").forEach(btn => {
-    btn.addEventListener("click", () => {
-        const ans = btn.nextElementSibling;
-        ans.style.display = ans.style.display === "block" ? "none" : "block";
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".faq-question").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const ans = btn.nextElementSibling;
+            ans.style.display = ans.style.display === "block" ? "none" : "block";
+        });
     });
 });
 </script>
