@@ -1003,7 +1003,8 @@ button.submit-btn:hover {
 
 <script>
 let totalSpaces = 20;
-let freeSpaces = 3;
+let freeSpaces = localStorage.getItem("freeSpaces") || 3;
+freeSpaces = parseInt(freeSpaces, 10);
 let counterAnimated = false;
 let isAdmin = false;
 const ADMIN_PASSWORD = "C1a5t3c2k0";
@@ -1110,6 +1111,7 @@ function saveFreeSpaces(e) {
         return;
     }
     freeSpaces = val;
+    localStorage.setItem("freeSpaces", freeSpaces);
     updateAvailabilityUI();
     alert("Zapisano nową liczbę wolnych garaży: " + freeSpaces);
 }
