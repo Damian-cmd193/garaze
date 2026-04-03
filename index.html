@@ -527,6 +527,34 @@ button.submit-btn:hover {
         filter: blur(2px);/* treść przesuwa się razem z menu */
     }
 }
+/* WhatsApp Button */
+    .whatsapp-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: #25D366;
+    color: white;
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    text-decoration: none;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    z-index: 2000;
+    transition: 0.3s;
+}
+
+.whatsapp-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+}
+    .whatsapp-btn img {
+    width: 32px;
+    height: 32px;
+}
 </style>
 </head>
 
@@ -1313,5 +1341,10 @@ navButtons.forEach(btn => {
     });
 });
 </script>
+    <a href="https://wa.me/48509291095?text=Hej%2C%20interesuje%20mnie%20wynajem%20garażu"
+   class="whatsapp-btn"
+   target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+</a>
 </body>
 </html>
