@@ -1003,8 +1003,16 @@ button.submit-btn:hover {
 
 <script>
 let totalSpaces = 20;
-let freeSpaces = localStorage.getItem("freeSpaces") || 3;
-freeSpaces = parseInt(freeSpaces, 10);
+
+let freeSpaces = parseInt(localStorage.getItem("freeSpaces"), 10);
+
+if (isNaN(freeSpaces)) {
+    freeSpaces = 3;
+}
+
+if (freeSpaces < 0) freeSpaces = 0;
+if (freeSpaces > totalSpaces) freeSpaces = totalSpaces;
+
 let counterAnimated = false;
 let isAdmin = false;
 const ADMIN_PASSWORD = "C1a5t3c2k0";
