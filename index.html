@@ -527,44 +527,29 @@ button.submit-btn:hover {
         filter: blur(2px);/* treść przesuwa się razem z menu */
     }
 }
-<!-- Przycisk WhatsApp -->
-
-
+    /* WhatsApp Button */
 .whatsapp-btn {
     position: fixed;
     bottom: 20px;
     right: 20px;
+    width: 60px;
+    height: 60px;
     background: #25D366;
     color: white;
-    padding: 14px 18px;
-    border-radius: 50px;
-    font-size: 16px;
-    font-weight: bold;
-    text-decoration: none;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    z-index: 1000;
-
-    /* Efekt pulsowania */
-    animation: pulse 1.8s infinite;
+    font-size: 28px;
     display: flex;
     align-items: center;
-    gap: 8px;
     justify-content: center;
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37,211,102,0.7); }
-    50% { transform: scale(1.05); box-shadow: 0 0 15px 10px rgba(37,211,102,0.4); }
-    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37,211,102,0.7); }
+    border-radius: 50%;
+    text-decoration: none;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    z-index: 2000;
+    transition: 0.3s;
 }
 
 .whatsapp-btn:hover {
     transform: scale(1.1);
-    box-shadow: 0 0 25px rgba(37,211,102,0.6);
-}
-    .whatsapp-btn img {
-    width: 32px;
-    height: 32px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.6);
 }
 </style>
 </head>
@@ -1352,6 +1337,10 @@ navButtons.forEach(btn => {
     });
 });
 </script>
-   <a href="https://wa.me/48509291095" target="_blank" class="whatsapp-btn">💬 WhatsApp</a>
+  <a href="https://wa.me/48509291095?text=Hej%2C%20interesuje%20mnie%20wynajem%20garażu"
+   class="whatsapp-btn"
+   target="_blank">
+    💬
+</a>
 </body>
 </html>
